@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+    <category>
+        <pattern>YOU CAN DO BETTER</pattern>
+        <template>Ok I will try.<oob><robot></robot></oob>
+        </template>
+    </category>
+</aiml>
