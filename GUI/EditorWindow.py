@@ -133,6 +133,62 @@ class EditorWindow(QMainWindow):
         self.editSpace.setLayout(self.editSpace.graphview.layout)
         # self.setLayout(self.layout)
 
+    def create_category_graph_view(self, cat):
+        try:
+            if cat.type == "topic":
+                # Iterate through topic and place categories
+                for category in cat.tags:
+                    thatToCheck = self.editSpace.graphview.getLastSentence(category)
+                    if DEBUG: print("got last sentence of category")
+                    title = "Category: " + category.cat_id
+                    aNode = Node(self.editSpace.graphview.scene, title, category)
+                    if DEBUG: print("created node")
+                    aNode.content.wdg_label.displayVisuals(category)
+                    if DEBUG: print("displayed contents on node")
+
+                    if thatToCheck is not None:
+                        for that in thatToCheck:
+                            self.editSpace.graphview.findChildNodes(aNode, that)
+                    
+                    # FIXME: Nodes only get placed if there are <that> tags otherwise get stacked in default place.
+                    self.editSpace.graphview.findParentNodes(aNode)
+                    self.editSpace.graphview.placeNodes(self.editSpace.graphview.scene.nodes)
+
+                    for node in self.editSpace.graphview.scene.nodes:
+                        node.updateConnectedEdges()
+
+                    aNode.content.catClicked.connect(self.editSpace.graphview.categoryClicked) # connecting signals coming from Content Widget
+
+                    # NOTE: When addChildClicked has been implemented then this can be uncommented
+                    # if DEBUG: print("trying to connect addChild button")
+                    # aNode.content.childClicked.connect(self.editSpace.graphview.addChildClicked) # connecting signals coming from Content Widget
+            elif cat.type == "comment":
+                print("Comment found, don't display comments on graphview.")
+            else:
+                thatToCheck = self.editSpace.graphview.getLastSentence(cat)
+                if DEBUG: print("got last sentence of category")
+                title = "Category: " + cat.cat_id
+                aNode = Node(self.editSpace.graphview.scene, title, cat)
+                if DEBUG: print("created node")
+                aNode.content.wdg_label.displayVisuals(cat)
+                if DEBUG: print("displayed contents on node")
+
+                if thatToCheck is not None:
+                    for that in thatToCheck:
+                        self.editSpace.graphview.findChildNodes(aNode, that)
+                
+                self.editSpace.graphview.findParentNodes(aNode)
+                self.editSpace.graphview.placeNodes(self.editSpace.graphview.scene.nodes)
+
+                for node in self.editSpace.graphview.scene.nodes:
+                    node.updateConnectedEdges()
+
+                aNode.content.catClicked.connect(self.editSpace.graphview.categoryClicked) # connecting signals coming from Content Widget
+        except Exception as ex:
+            print("Exception caught in TabController - create_category_graph_view()")
+            print(ex)
+            handleError(ex)
+
     def zoom_in_clicked(self):
         if DEBUG: print("Zoom In Clicked")
         zoomFactor = self.editSpace.graphview.view.zoomInFactor
@@ -310,21 +366,12 @@ class EditorWindow(QMainWindow):
 
             # Adding all categories to the scene
             for cat in aiml.tags:
-                if cat.type == "topic":
-                    topics.append(cat)
-                    continue
-                print("Category type: {}".format(type(cat)))
-                print("Category contents: {}".format(cat))
-                node = Node(self.editSpace.graphview.scene, category=cat)
-                node.content.wdg_label.displayVisuals(cat)
-                print("New node created")
-                # self.editSpace.graphview.addNode(node)
+                self.create_category_graph_view(cat)
                 numCats = numCats + 1
 
-            # Add any categories inside topics to the scene
+            # # Add any categories inside topics to the scene
             for cat in topics:
-                node = Node(self.editSpace.graphview.scene, category=cat)
-                node.content.wdg_label.displayVisuals(cat)
+                self.create_category_graph_view(cat)
                 numCats = numCats + 1
 
             if DEBUG: print("Finished creating " + str(numCats) + " categories")
