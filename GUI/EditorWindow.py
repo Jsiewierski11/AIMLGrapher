@@ -12,6 +12,7 @@ from GUI.EditorWidget import EditorWidget
 from GUI.Node.QDM.GraphicsScene import *
 from Utils.ErrorMessage import handleError, handleCompileMsg, compileSuccessful, exportSuccessful, importSuccessful
 from GUI.Node.Scene.Scene import Scene
+from GUI.Node.Node import Node
 
 
 DEBUG = True
@@ -305,24 +306,31 @@ class EditorWindow(QMainWindow):
             self.filename = os.path.splitext(fname)[0]  # removing extension from path name
             aiml = Storage.importAIML(self.filename) # import the aiml file
             numCats = 0
-            if DEBUG: print(f"aiml tags:\n{aiml.tags}")
-            if DEBUG: print(f"aiml tags:\n{str(aiml.tags)}")
             topics = []
+
+            # Adding all categories to the scene
             for cat in aiml.tags:
                 if cat.type == "topic":
                     topics.append(cat)
                     continue
-                # self.catCreated.emit(cat)
-                self.editSpace.graphview.addNode("new", [0], [0], 100, 100)
+                print("Category type: {}".format(type(cat)))
+                print("Category contents: {}".format(cat))
+                node = Node(self.editSpace.graphview.scene, category=cat)
+                node.content.wdg_label.displayVisuals(cat)
+                print("New node created")
+                # self.editSpace.graphview.addNode(node)
                 numCats = numCats + 1
+
+            # Add any categories inside topics to the scene
             for cat in topics:
-                self.editSpace.graphview.addNode("new", [0], [0], 100, 100)
+                node = Node(self.editSpace.graphview.scene, category=cat)
+                node.content.wdg_label.displayVisuals(cat)
                 numCats = numCats + 1
+
             if DEBUG: print("Finished creating " + str(numCats) + " categories")
             if DEBUG: print("file import successful")
             self.editSpace.graphview.placeNodes(self.editSpace.graphview.scene.nodes)
             importSuccessful()
-            if DEBUG: print("Compile after import sucessful!")
         except Exception as ex:
             handleError(ex)
             print(ex)

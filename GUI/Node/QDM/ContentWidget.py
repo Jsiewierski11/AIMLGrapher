@@ -36,16 +36,14 @@ class QDMNodeContentWidget(QWidget, Serializable):
             # self.addChild = QPushButton("Add child")
             # self.layout.addWidget(self.addChild)
 
-            # connecting label to allow signals to be sent to slot
-            self.wdg_label.templateLabel.catClicked.connect(self.categoryClicked)
-            self.wdg_label.patternLabel.catClicked.connect(self.categoryClicked)
-            self.wdg_label.thatLabel.catClicked.connect(self.categoryClicked)
+            # Display content on node
+            # self.wdg_label.displayVisuals(self.node.category)
+            
+            # self.wdg_label.templateLabel.setText(self.node.category)
+            # self.wdg_label.patternLabel.catClicked.connect(self.categoryClicked)
+            # self.wdg_label.thatLabel.catClicked.connect(self.categoryClicked)
             # self.addChild.clicked.connect(self.addChildClicked)
 
-            # self.layout.addWidget(QLabel("What Ryan Hears:"))
-            # self.layout.addWidget(QDMTextEdit(""))
-            # self.layout.addWidget(QLabel("What Ryan Says:"))
-            # self.layout.addWidget(QDMTextEdit(""))
         except Exception as ex:
             print("Exception caught in ContentWidget - initUI()")
             print(ex)

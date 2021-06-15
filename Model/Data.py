@@ -263,14 +263,21 @@ class Tag(Serializable):
         return tags
 
     def getContents(self):
+        tags = self.tags
+        for tag in tags:
+            # ignoring oob tags for displaying content
+            if type(tag) is not str:
+                if tag.type == "oob":
+                    tags.remove(tag)
+                
         attrib = (' ' + ' '.join('{}=\"{}\"'.format(
             key, val) for key, val in self.attrib.items())) if len(self.attrib) > 0 else ""
-        if len(self.tags) > 1:
-            tags = '\n' + indent('\n'.join(map(str, self.tags)),
+        if len(tags) > 1:
+            tags = '\n' + indent('\n'.join(map(str, tags)),
                                  Formatting.indentation) + '\n'
             tags = tags.strip()
         elif len(self.tags) > 0:
-            tags = '\n'.join(map(str, self.tags))
+            tags = '\n'.join(map(str, tags))
             tags = tags.strip()
         else:
             tags = ""

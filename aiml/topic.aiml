@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+    <topic name="mytopic">
+    <category>
+        <pattern>YOU CAN DO BETTER</pattern>
+        <template>
+            Ok I will try.<oob><robot></robot></oob>
+        </template>
+    </category>
+    <category>
+        <pattern>WHAT DO YOU WANT TO TALK ABOUT</pattern>
+	    <template>
+            I'll talk about whatever with you.
+            <oob><robot></robot></oob>
+        </template>
+    </category>
+    </topic>
+    <category>
+        <pattern>HOW ARE YOU</pattern>
+	    <template>
+            I am doing well thank you.
+            <oob><robot></robot></oob>
+        </template>
+    </category>
+</aiml>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+    <category>
+        <pattern>Hi</pattern>
+        <template>
+            Hello. How are you?
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern>*</pattern>
+        <that>HOW ARE YOU?</that>
+        <template>
+            Glad to hear that.
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+</aiml>
