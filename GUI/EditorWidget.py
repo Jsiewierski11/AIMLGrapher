@@ -447,12 +447,15 @@ class EditorWidget(QWidget):
 
             xOffset = 500
             
-            for node in nodes:
+            for i, node in enumerate(nodes):
                 if len(node.parents) is 0:
                     if DEBUG: print("node has no parents place to the left.")
                     if DEBUG: print(f"Placing category:\n{node.category}")
-                    node.setPos(-900, -900 + yOffset)
-                    yOffset += 575
+                    node.setPos(-1900, -1900 + yOffset)
+                    if i % 2 == 0:
+                        yOffset += 300
+                    else:
+                        xOffset += 100
                 else:
                     if DEBUG: print("node has parents")
                     yOffset = 0
@@ -460,48 +463,16 @@ class EditorWidget(QWidget):
                         depth = depth + 1
                         y = node.grNode.y()
                         child.setPos(xOffset, y + yOffset)
-                        xOffset += 200
-                        yOffset += 575
+                        xOffset += 100
+                        yOffset += 300
                         if DEBUG: print(f"Placing category:\n{node.category}")
                         self.placeNodes(child.children, depth, yOffset)
                     node.setPos(xOffset, yOffset)
-                    xOffset += 300
+                    xOffset += 100
         except Exception as ex:
             print("Exception caught placing nodes!")
             print(ex)
             handleError(ex)
-
-    # @pyqtSlot(Tag)
-    # def addChildClicked(self, cat):
-    #     try:
-    #         if DEBUG: print("In slot of editor widget")
-    #         template = cat.findTag("template")
-    #         if DEBUG: print("template tags list: " + str(template.tags))
-    #         if template.findTag("condition") is None and template.findTag("random") is None:
-    #             if DEBUG: print("no table inside template")
-    #             thatStr = self.getLastSentence(cat)
-    #             if DEBUG: print(thatStr)
-    #             self.childClicked.emit(thatStr[0])  # emitting to Editor Window
-    #         else:
-    #             if self.tableContainsTail(template) is False:
-    #                 if DEBUG: print("table is last thing in template. Must choose response to use for that")
-    #                 template = cat.findTag("template")
-    #                 condition = template.findTag("condition")
-    #                 random = template.findTag("random")
-    #                 if condition is not None:
-    #                     if DEBUG: print("create response table out of condition items")
-    #                     self.responseTable = ResponseSelection(tag=condition, category=cat, editspace=self)
-    #                 else:
-    #                     if DEBUG: print("create response table out of random items")
-    #                     self.responseTable = ResponseSelection(tag=random, category=cat, editspace=self)
-    #             else:
-    #                 if DEBUG: print("table contains tail, there is only one possible sentence to use for that")
-    #                 thatStr = self.getLastSentence(cat)
-    #                 if DEBUG: print(thatStr[0])
-    #                 self.childClicked.emit(thatStr[0]) # emitting to Editor Window
-    #     except Exception as ex:
-    #         print(ex)
-    #         handleError(ex)
 
     def setNodeStyleSheet(self, node):
         node.content.setStyleSheet(self.stylesheet_filename)

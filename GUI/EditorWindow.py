@@ -150,7 +150,7 @@ class EditorWindow(QMainWindow):
                         for that in thatToCheck:
                             self.editSpace.graphview.findChildNodes(aNode, that)
                     
-                    # FIXME: Nodes only get placed if there are <that> tags otherwise get stacked in default place.
+                    # NOTE: Nodes get placed if there are <that> tags otherwise get stacked vertically from default place.
                     self.editSpace.graphview.findParentNodes(aNode)
                     self.editSpace.graphview.placeNodes(self.editSpace.graphview.scene.nodes)
 
@@ -158,10 +158,6 @@ class EditorWindow(QMainWindow):
                         node.updateConnectedEdges()
 
                     aNode.content.catClicked.connect(self.editSpace.graphview.categoryClicked) # connecting signals coming from Content Widget
-
-                    # NOTE: When addChildClicked has been implemented then this can be uncommented
-                    # if DEBUG: print("trying to connect addChild button")
-                    # aNode.content.childClicked.connect(self.editSpace.graphview.addChildClicked) # connecting signals coming from Content Widget
             elif cat.type == "comment":
                 print("Comment found, don't display comments on graphview.")
             else:
@@ -177,6 +173,7 @@ class EditorWindow(QMainWindow):
                     for that in thatToCheck:
                         self.editSpace.graphview.findChildNodes(aNode, that)
                 
+                # NOTE: Nodes get placed if there are <that> tags otherwise get stacked vertically from default place.
                 self.editSpace.graphview.findParentNodes(aNode)
                 self.editSpace.graphview.placeNodes(self.editSpace.graphview.scene.nodes)
 
