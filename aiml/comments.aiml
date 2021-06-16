@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <aiml version="2.0">
     <category>
-        <pattern></pattern>
+        <pattern>Hi</pattern>
         <template>
+            Before comment.
             <!--
             <random>
                 <li></li>
                 <li></li>
             </random>
             -->
+            After comment.
             <oob>
                 <robot></robot>
             </oob>

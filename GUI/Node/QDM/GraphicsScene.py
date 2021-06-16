@@ -18,8 +18,8 @@ class QDMGraphicsScene(QGraphicsScene):
             self.scene = scene
 
             # settings
-            self.gridSize = 20
-            self.gridSquares = 5
+            self.gridSize = 200
+            self.gridSquares = 50
 
             self._color_background = QColor("#393939")
             self._color_light = QColor("#2f2f2f")

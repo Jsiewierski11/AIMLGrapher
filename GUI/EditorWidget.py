@@ -189,20 +189,31 @@ class EditorWidget(QWidget):
         try:
             template = cat.findTag("template")
             sentences = []
+
+            # Check for empty template
             if template is None:
                 if DEBUG: print("Template is empty")
                 return None
+
+            # Check for condition or random blocks
             condition = template.findTag("condition")
             random = template.findTag("random")
-            if DEBUG: print("Before logic")
             if condition is None and random is None:
                 if DEBUG: print("no random or condition tag found in template")
                 if DEBUG: print(str(template))
                 tempString = template.findTag("text")
                 if DEBUG: print(f"tempString: {tempString}")
+
+                # Check for empty template string
                 if tempString is None:
                     if DEBUG: print("No sentence in category")
                     return None
+
+                set_tag = template.findTag("set")
+                if set_tag is not None:
+                    sentences.append(set_tag.findTag("text"))
+
+
                 tempArr = tempString.split()
                 index = 0
                 for word in reversed(tempArr):
@@ -260,6 +271,12 @@ class EditorWidget(QWidget):
                                         punctuationExists = True
                                         break
                                 index = index + 1
+
+                                # Checking for set tag
+                                set_tag = template.findTag("set")
+                                if set_tag is not None:
+                                    sentences.append(set_tag.findTag("text"))
+                                    
                             # If made it to end of array without finding another punctiation mark. return full text in tag
                             if punctuationExists is False:
                                 sentences.append(liText)

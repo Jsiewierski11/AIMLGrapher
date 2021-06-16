@@ -1,0 +1,785 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+
+  <topic name="history">
+
+    <category>
+        <pattern># WAR ^</pattern>
+        <that>Would you like to talk about presidents, inventions, the voyage of the Titanic, or the history of war?</that>
+        <template>
+          <think><set name="level">americanhistory</set></think>
+        I have a question for you. Are you a veteran?
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern># HISTORY OF WAR ^</pattern>
+        <that>Would you like to talk about presidents, inventions, the voyage of the Titanic, or the history of war?</that>
+        <template>
+          <think><set name="level">americanhistory</set></think>
+        I have a question for you. Are you a veteran?
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern># THE HISTORY OF WAR ^</pattern>
+        <that>Would you like to talk about presidents, inventions, the voyage of the Titanic, or the history of war?</that>
+        <template>
+          <think><set name="level">americanhistory</set></think>
+        I have a question for you. Are you a veteran?
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern># WAR HISTORY ^</pattern>
+        <that>Would you like to talk about presidents, inventions, the voyage of the Titanic, or the history of war?</that>
+        <template>
+          <think><set name="level">americanhistory</set></think>
+        I have a question for you. Are you a veteran?
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern>^ <set>YES</set> ^</pattern>
+        <that>Are you a veteran?</that>
+        <template>
+            Thank you for your service.
+            <set name="most recent level question">What war did you serve in?</set>
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern>^ <set>NO</set> ^</pattern>
+        <that>Are you a veteran?</that>
+        <template>
+            I see! I just thought to ask. <set name="most recent level question">Do you want to hear a quote about war from Winston Churchill?</set>
+
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern># VIETNAM ^</pattern>
+        <that>Are you a veteran?</that>
+        <template>
+            That must have been such a sacrifice. I respect you for your time in the Vietnam War. <set name="most recent level question">Are you involved with veteran's affairs today?</set>
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern># VIETNAM WAR ^</pattern>
+        <that>Are you a veteran?</that>
+        <template>
+            That must have been such a sacrifice. I respect you for your time in the Vietnam War. <set name="most recent level question">Are you involved with veteran's affairs today?</set>
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern># KOREAN ^</pattern>
+        <that>Are you a veteran?</that>
+        <template>
+            That must have been such a sacrifice. I respect you for your time in the Korean War. <set name="most recent level question">Are you involved with veteran's affairs today?</set>
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern># KOREAN WAR ^</pattern>
+        <that>Are you a veteran?</that>
+        <template>
+            That must have been such a sacrifice. I respect you for your time in the Korean War. <set name="most recent level question">Are you involved with veteran's affairs today?</set>
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern># WORLD WAR TWO ^</pattern>
+        <that>Are you a veteran?</that>
+        <template>
+            That must have been such a sacrifice. I respect you for your time in World War Two. <set name="most recent level question">Are you involved with veteran's affairs today?</set>
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern># WORLD WAR 2 ^</pattern>
+        <that>Are you a veteran?</that>
+        <template>
+            That must have been such a sacrifice. I respect you for your time in World War Two. <set name="most recent level question">Are you involved with veteran's affairs today?</set>
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern># WORLD WAR II ^</pattern>
+        <that>Are you a veteran?</that>
+        <template>
+            That must have been such a sacrifice. I respect you for your time in World War Two. <set name="most recent level question">Are you involved with veteran's affairs today?</set>
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+
+    <category>
+        <pattern># <set>YES</set> ^</pattern>
+        <that>Do you want to hear a quote about war from Winston Churchill?</that>
+        <template>
+          <set name="most recent level question">Winston Churchill said. Never believe any war will be smooth and easy, or that anyone who embarks on the strange voyage can measure the tides and hurricanes he will encounter. Do you agree?</set>
+
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern># <set>NO</set> ^</pattern>
+        <that>Do you want to hear a quote about war from Winston Churchill?</that>
+        <template>
+            No sweat. <set name="most recent level question">Would you like to talk about the Vietnam War, the Korean War, or World War Two?</set>
+
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern>_</pattern>
+        <that>What war did you serve in?</that>
+        <template>
+
+            That must have been such a sacrifice. <set name="most recent level question">Are you involved with veteran's affairs today?</set>
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern># VIETNAM WAR ^</pattern>
+        <that>What war did you serve in?</that>
+        <template>
+            That must have been such a sacrifice. I respect you for your time in the Vietnam War. <set name="most recent level question">Are you involved with veteran's affairs today?</set>
+
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern># VIETNAM ^</pattern>
+        <that>What war did you serve in?</that>
+        <template>
+            That must have been such a sacrifice. I respect you for your time in the Vietnam War. <set name="most recent level question">Are you involved with veteran's affairs today?</set>
+
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern># KOREAN WAR ^</pattern>
+        <that>What war did you serve in?</that>
+        <template>
+
+            That must have been such a sacrifice. I respect you for your time in the Korean War. <set name="most recent level question">Are you involved with veteran's affairs today?</set>
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern># KOREAN ^</pattern>
+        <that>What war did you serve in?</that>
+        <template>
+            That must have been such a sacrifice. I respect you for your time in the Korean War. <set name="most recent level question">Are you involved with veteran's affairs today?</set>
+
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern># WORLD WAR TWO ^</pattern>
+        <that>What war did you serve in?</that>
+        <template>
+
+            That must have been such a sacrifice. I respect you for your time in World War Two. <set name="most recent level question">Are you involved with veteran's affairs today?</set>
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern># WORLD WAR 2 ^</pattern>
+        <that>What war did you serve in?</that>
+        <template>
+            That must have been such a sacrifice. I respect you for your time in World War Two. <set name="most recent level question">Are you involved with veteran's affairs today?</set>
+
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern># WORLD WAR II ^</pattern>
+        <that>What war did you serve in?</that>
+        <template>
+            That must have been such a sacrifice. I respect you for your time in World War Two. <set name="most recent level question">Are you involved with veteran's affairs today?</set>
+
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern># DESERT SHIELD ^</pattern>
+        <that>What war did you serve in?</that>
+        <template>
+            That must have been such a sacrifice. I respect you for your time in the Desert Shield. <set name="most recent level question">Are you involved with veteran's affairs today?</set>
+
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern># DESERT STORM ^</pattern>
+        <that>What war did you serve in?</that>
+        <template>
+
+            That must have been such a sacrifice. I respect you for your time in the Desert Storm. <set name="most recent level question">Are you involved with veteran's affairs today?</set>
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern># IRAQ ^</pattern>
+        <that>What war did you serve in?</that>
+        <template>
+            That must have been such a sacrifice. I respect you for your time in Iraq. <set name="most recent level question">Are you involved with veteran's affairs today?</set>
+
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern># WAR ON TERROR ^</pattern>
+        <that>What war did you serve in?</that>
+        <template>
+
+            That must have been such a sacrifice. I respect you for your time during the War on Terror. <set name="most recent level question">Are you involved with veteran's affairs today?</set>
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+
+
+    <category>
+        <pattern># <set>YES</set> ^</pattern>
+        <that>Are you involved with veteran's affairs today?</that>
+        <template>
+
+            <set name="most recent level question">Can you tell me more about your contributions to veteran's affairs?</set>
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern># <set>NO</set> ^</pattern>
+        <that>Are you involved with veteran's affairs today?</that>
+        <template>
+            I see! I just thought to ask. <set name="most recent level question">Do you want to hear a quote about war from Winston Churchill?</set>
+
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern># <set>DON T KNOW</set> ^</pattern>
+        <that>Are you involved with veteran's affairs today?</that>
+        <template>
+            I see! I just thought to ask. <set name="most recent level question">Do you want to hear a quote about war from Winston Churchill?</set>
+
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern># NOT SURE #</pattern>
+        <that>Are you involved with veteran's affairs today?</that>
+        <template>
+            I see! I just thought to ask. <set name="most recent level question">Do you want to hear a quote about war from Winston Churchill?</set>
+
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern>_</pattern>
+        <that>Can you tell me more about your contributions to veteran's affairs?</that>
+        <template>
+            Thank you so much for shairng. You heave led such an honorable life.
+            <set name="most recent level question">Do you want to hear a quote about war from Winston Churchill?</set>
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+
+    <category>
+        <pattern># <set>NO</set> ^</pattern>
+        <that>Can you tell me more about your contributions to veteran's affairs?</that>
+        <template>
+            I see! I just thought to ask. <set name="most recent level question">Do you want to hear a quote about war from Winston Churchill?</set>
+
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern># <set>DON T KNOW</set> ^</pattern>
+        <that>Can you tell me more about your contributions to veteran's affairs?</that>
+        <template>
+            I see! I just thought to ask. <set name="most recent level question">Do you want to hear a quote about war from Winston Churchill?</set>
+
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern># NOT SURE #</pattern>
+        <that>Can you tell me more about your contributions to veteran's affairs?</that>
+        <template>
+            I see! I just thought to ask. <set name="most recent level question">Do you want to hear a quote about war from Winston Churchill?</set>
+
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern># <set>YES</set> ^</pattern>
+        <that>Do you agree?</that>
+        <template>
+            It's good to hear your take. Now tell me. <set name="most recent level question">Would you like to talk about the Vietnam War, the Korean War, or World War Two?</set>
+
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern># <set>NO</set> ^</pattern>
+        <that>Do you agree?</that>
+        <template>
+            It's good to hear your take. Now tell me. <set name="most recent level question">Would you like to talk about the Vietnam War, the Korean War, or World War Two?</set>
+
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern># <set>DON T KNOW</set> ^</pattern>
+        <that>Do you agree?</that>
+        <template>
+            It's good to hear your take. Now tell me. <set name="most recent level question">Would you like to talk about the Vietnam War, the Korean War, or World War Two?</set>
+
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern># NOT SURE #</pattern>
+        <that>Do you agree?</that>
+        <template>
+            It's good to hear your take. Now tell me. <set name="most recent level question">Would you like to talk about the Vietnam War, the Korean War, or World War Two?</set>
+
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+
+    <category>
+        <pattern># VIETNAM WAR ^</pattern>
+        <that>Would you like to talk about the Vietnam War, the Korean War, or World War Two?</that>
+        <template>
+            Here is a fact about the Vietnam War.
+            <random>
+            <li>It wasn't just the United States and Vietnam. <set name="most recent level question">Australia, New Zealand, and South Korea also fought in the war; did you know that?</set></li>
+            <li>Contrary to some beliefs. <set name="most recent level question">Many of the men who fought in Vietnam weren’t drafted, but volunteered; did you know that?</set></li>
+            <li><set name="most recent level question">In nineteen eighty two the Vietnam Veterans Memorial was dedicated in Washington, inscribed with the names of over fifty thousand members of U.S. armed forces; did you know that?</set></li>
+          </random>
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern># VIETNAM ^</pattern>
+        <that>Would you like to talk about the Vietnam War, the Korean War, or World War Two?</that>
+        <template>
+          Here is a fact about the Vietnam War.
+          <random>
+          <li>It wasn't just the United States and Vietnam. <set name="most recent level question">Australia, New Zealand, and South Korea also fought in the war; did you know that?</set></li>
+          <li>Contrary to some beliefs. <set name="most recent level question">Many of the men who fought in Vietnam weren’t drafted, but volunteered; did you know that?</set></li>
+          <li><set name="most recent level question">In nineteen eighty two the Vietnam Veterans Memorial was dedicated in Washington, inscribed with the names of over fifty thousand members of U.S. armed forces; did you know that?</set></li>
+        </random>
+
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern># KOREAN WAR ^</pattern>
+        <that>Would you like to talk about the Vietnam War, the Korean War, or World War Two?</that>
+        <template>
+          Here is a fact about the Korean War.
+          <random>
+          <li><set name="most recent level question">The Korean War was officially called a police action because President Truman did not ask Congress for a declaration of war; did you know that?</set></li>
+          <li><set name="most recent level question">Many soldiers unfortunately fell to frostbite before getting to the battlefields. The temperature would fall below zero for long periods; did you know that?</set></li>
+          <li><set name="most recent level question">The Korean War is often called the The Forgotten War, or the Unknown War because it did not receive as much attention from the media; did you know that?</set></li>
+        </random>
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern># KOREAN ^</pattern>
+        <that>Would you like to talk about the Vietnam War, the Korean War, or World War Two?</that>
+        <template>
+          Here is a fact about the Korean War.
+          <random>
+          <li><set name="most recent level question">The Korean War was officially called a police action because President Truman did not ask Congress for a declaration of war; did you know that?</set></li>
+          <li><set name="most recent level question">Many soldiers unfortunately fell to frostbite before getting to the battlefields. The temperature would fall below zero for long periods; did you know that?</set></li>
+          <li><set name="most recent level question">The Korean War is often called the The Forgotten War, or the Unknown War because it did not receive as much attention from the media; did you know that?</set></li>
+        </random>
+
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern># WORLD WAR TWO ^</pattern>
+        <that>Would you like to talk about the Vietnam War, the Korean War, or World War Two?</that>
+        <template>
+
+          <random>
+          <li>Here is a fact about the World War Two. <set name="most recent level question">In nineteen forty one, over 3 million cars were made in the United States, and only 139 were made during the entirety of the war; did you know that?</set></li>
+          <li>Here is a staggering statistic. <set name="most recent level question">Only twenty percent of men born in the Soviet Union in nineteen twenty three survived the war; did you know that?</set></li>
+          <li><set name="most recent level question">In World War Two, the largest Japanese spy ring was coincidentally located in Mexico; did you know that?</set></li>
+          </random>
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern># WORLD WAR 2 ^</pattern>
+        <that>Would you like to talk about the Vietnam War, the Korean War, or World War Two?</that>
+        <template>
+          <random>
+          <li>Here is a fact about the World War Two. <set name="most recent level question">In nineteen forty one, over 3 million cars were made in the United States, and only 139 were made during the entirety of the war; did you know that?</set></li>
+          <li>Here is a staggering statistic. <set name="most recent level question">Only twenty percent of men born in the Soviet Union in nineteen twenty three survived the war; did you know that?</set></li>
+          <li><set name="most recent level question">In World War Two, the largest Japanese spy ring was coincidentally located in Mexico; did you know that?</set></li>
+          </random>
+
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern># WORLD WAR II ^</pattern>
+        <that>Would you like to talk about the Vietnam War, the Korean War, or World War Two?</that>
+        <template>
+          <random>
+          <li>Here is a fact about the World War Two. <set name="most recent level question">In nineteen forty one, over 3 million cars were made in the United States, and only 139 were made during the entirety of the war; did you know that?</set></li>
+          <li>Here is a staggering statistic. <set name="most recent level question">Only twenty percent of men born in the Soviet Union in nineteen twenty three survived the war; did you know that?</set></li>
+          <li><set name="most recent level question">In World War Two, the largest Japanese spy ring was coincidentally located in Mexico; did you know that?</set></li>
+          </random>
+
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+
+    <category>
+        <pattern>_</pattern>
+        <that>Australia, New Zealand, and South Korea also fought in the war; did you know that?</that>
+        <template>
+          Indeed!
+
+          I don't know about you, but I like to learn something new every day. <set name="most recent level question">Would you like to hear another fact about war?</set>
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern>_</pattern>
+        <that>Many of the men who fought in Vietnam weren’t drafted, but volunteered; did you know that?</that>
+        <template>
+          Indeed!
+
+          I don't know about you, but I like to learn something new every day. <set name="most recent level question">Would you like to hear another fact about war?</set>
+
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern>_</pattern>
+        <that>In nineteen eighty two the Vietnam Veterans Memorial was dedicated in Washington, inscribed with the names of over fifty thousand members of U.S. armed forces; did you know that?</that>
+        <template>
+          Indeed!
+
+          I don't know about you, but I like to learn something new every day. <set name="most recent level question">Would you like to hear another fact about war?</set>
+
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern>_</pattern>
+        <that>The Korean War was officially called a police action because President Truman did not ask Congress for a declaration of war; did you know that?</that>
+        <template>
+          Indeed!
+
+          I don't know about you, but I like to learn something new every day. <set name="most recent level question">Would you like to hear another fact about war?</set>
+
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern>_</pattern>
+        <that>Many soldiers unfortunately fell to frostbite before getting to the battlefields. The temperature would fall below zero for long periods; did you know that?</that>
+        <template>
+          Indeed!
+
+          I don't know about you, but I like to learn something new every day. <set name="most recent level question">Would you like to hear another fact about war?</set>
+
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern>_</pattern>
+        <that>The Korean War is often called the The Forgotten War, or the Unknown War because it did not receive as much attention from the media; did you know that?</that>
+        <template>
+          Indeed!
+
+          I don't know about you, but I like to learn something new every day. <set name="most recent level question">Would you like to hear another fact about war?</set>
+
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern>_</pattern>
+        <that>In nineteen forty one, over 3 million cars were made in the United States, and only 139 were made during the entirety of the war; did you know that?</that>
+        <template>
+          Indeed!
+
+          I don't know about you, but I like to learn something new every day. <set name="most recent level question">Would you like to hear another fact about war?</set>
+
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern>_</pattern>
+        <that>Only twenty percent of men born in the Soviet Union in nineteen twenty three survived the war; did you know that?</that>
+        <template>
+          Indeed!
+
+          I don't know about you, but I like to learn something new every day. <set name="most recent level question">Would you like to hear another fact about war?</set>
+
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern>_</pattern>
+        <that>In World War Two, the largest Japanese spy ring was coincidentally located in Mexico; did you know that?</that>
+        <template>
+          Indeed!
+
+          I don't know about you, but I like to learn something new every day. <set name="most recent level question">Would you like to hear another fact about war?</set>
+
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern># <set>YES</set> ^</pattern>
+        <that>Would you like to hear another fact about war?</that>
+        <template>
+          <random>
+          <li>Here is a fact about the World War Two. <set name="most recent level question">In nineteen forty one, over 3 million cars were made in the United States, and only 139 were made during the entirety of the war. It's so interesting to learn more, right?</set></li>
+          <li><set name="most recent level question">In World War Two, the largest Japanese spy ring was coincidentally located in Mexico. It's so interesting to learn more, right?</set></li>
+          <li>Here is a fact about the Korean War. <set name="most recent level question">The Korean War was officially called a police action because President Truman did not ask Congress for a declaration of war. It's so interesting to learn more, right?</set></li>
+          <li>Here is a fact about the Korean War. <set name="most recent level question">Many soldiers unfortunately fell to frostbite before getting to the battlefields. The temperature would fall below zero for long periods. It's so interesting to learn more, right?</set></li>
+          <li>Here is a fact about the Korean War. <set name="most recent level question">The Korean War is often called the The Forgotten War, or the Unknown War because it did not receive as much attention from the media. It's so interesting to learn more, right?</set></li>
+          <li>Here is a staggering statistic about World War Two. <set name="most recent level question">Only twenty percent of men born in the Soviet Union in nineteen twenty three survived the war. It's so interesting to learn more, right?</set></li>
+          <li>Here is a fact about the Vietnam War. It wasn't just the United States and Vietnam. <set name="most recent level question">Australia, New Zealand, and South Korea also fought in the war. It's so interesting to learn more, right?</set></li>
+          <li>Here is a fact about the Vietnam War. Contrary to some beliefs. <set name="most recent level question">Many of the men who fought in Vietnam weren’t drafted, but volunteered. It's so interesting to learn more, right?</set></li>
+          <li>Here is a fact about the Vietnam War. <set name="most recent level question">In nineteen eighty two the Vietnam Veterans Memorial was dedicated in Washington, inscribed with the names of over fifty thousand members of U.S. armed forces. It's so interesting to learn more, right?</set></li>
+          </random>
+
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern>_</pattern>
+        <that>It's so interesting to learn more, right?</that>
+        <template>
+        <set name="most recent level question">Would you like to keep talking about American history?</set>
+
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern># <set>NO</set> ^</pattern>
+        <that>Would you like to hear another fact about war?</that>
+        <template>
+        <set name="most recent level question">Would you like to keep talking about American history?</set>
+
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+
+    <category>
+        <pattern># <set>DON T KNOW</set> ^</pattern>
+        <that>Would you like to hear another fact about war?</that>
+        <template>
+              <set name="most recent level question">Would you like to keep talking about American history?</set>
+
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern># NOT SURE #</pattern>
+        <that>Would you like to hear another fact about war?</that>
+        <template>
+              <set name="most recent level question">Would you like to keep talking about American history?</set>
+
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+
+  </topic>
+</aiml>
