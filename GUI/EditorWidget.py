@@ -173,7 +173,43 @@ class EditorWidget(QWidget):
             if DEBUG: print("Made it to end without finding anything. This should not happen!")
             return False, None
         except Exception as ex:
-            print("Exception caught in EditorWidget - tableContainsTail_better()")
+            print("Exception caught in EditorWidget - tableContainsTail()")
+            print(ex)
+            handleError(ex)
+
+    """
+    Determine if the set tag has text afterwards.
+    """
+    def setContainsTail(self, template):
+        try:
+            print("In setContainsTail()")
+            for index, tag in enumerate(reversed(template.tags)):
+                if DEBUG: print("Beginning of loop")
+                if DEBUG: print(f"Current tag: {tag}")
+
+                if isinstance(tag, str) is True:
+                    if DEBUG: print("String found before Condition or Random. Return True.")
+                    if tag.strip() != "":
+                        return False
+                    else:
+                        return True
+                # Check for <oob> tag
+                elif tag.type == "oob":
+                    if DEBUG: print("oob found, keep searching.")
+                elif tag.type == "condition" or tag.type == "random":
+                    if DEBUG: print("Condition or Random found before String. Return False.")
+                    return False
+                elif tag.type == "set":
+                    if DEBUG: print("Found set tag")
+                    if index == 0:
+                        return False
+                    else:
+                        return True
+            # Made it to end without finding anything
+            if DEBUG: print("Made it to end without finding anything. This should not happen!")
+            return False
+        except Exception as ex:
+            print("Exception caught in EditorWidget - setContainsTail()")
             print(ex)
             handleError(ex)
 
@@ -232,7 +268,7 @@ class EditorWidget(QWidget):
                             sentences.append(lastSentence)
                     index = index + 1
 
-                # If made it to end of array without finding another punctiation mark. return full text in template
+                # If we made it to end of array without finding another punctiation mark. return full text in template
                 if len(sentences) is 0:
                     if DEBUG: print(f"appending: {tempString}")
                     sentences.append(tempString)
@@ -251,6 +287,18 @@ class EditorWidget(QWidget):
                         for li in condition.tags:
                             liText = li.findTag("text")
                             if DEBUG: print("text inside condition: " + liText)
+
+                            # Checking for set tag
+                            set_tag = li.findTag("set")
+                            setFound = False
+                            if set_tag is not None:
+                                print("Found set tag in condition block: {}".format(set_tag.findTag("text")))
+                                setFound = self.setContainsTail(li)
+                                if not setFound:
+                                    print("Set tag is last sentence")
+                                    sentences.append(set_tag.findTag("text"))
+                                
+
                             liArr = liText.split()
                             index = 0
                             punctuationExists = False
@@ -271,14 +319,9 @@ class EditorWidget(QWidget):
                                         punctuationExists = True
                                         break
                                 index = index + 1
-
-                                # Checking for set tag
-                                set_tag = template.findTag("set")
-                                if set_tag is not None:
-                                    sentences.append(set_tag.findTag("text"))
                                     
                             # If made it to end of array without finding another punctiation mark. return full text in tag
-                            if punctuationExists is False:
+                            if punctuationExists is False and setFound is False:
                                 sentences.append(liText)
                         return sentences
                     else:
@@ -286,6 +329,17 @@ class EditorWidget(QWidget):
                         for li in random.tags:
                             liText = li.findTag("text")
                             if DEBUG: print("text inside random: " + liText)
+
+                            # Checking for set tag
+                            set_tag = li.findTag("set")
+                            setFound = False
+                            if set_tag is not None:
+                                print("Found set tag in random block: {}".format(set_tag.findTag("text")))
+                                setFound = self.setContainsTail(li)
+                                if not setFound:
+                                    print("Set tag is last sentence")
+                                    sentences.append(set_tag.findTag("text"))
+
                             liArr = liText.split()
                             index = 0
                             punctuationExists = False
@@ -307,7 +361,7 @@ class EditorWidget(QWidget):
                                         break
                                 index = index + 1
                             # If at the end of array without finding another punctiation mark. return full text in tag
-                            if punctuationExists is False:
+                            if punctuationExists is False and setFound is False:
                                 if DEBUG: print(f"appending: {liText}")
                                 sentences.append(liText)
                         return sentences
@@ -453,9 +507,9 @@ class EditorWidget(QWidget):
                     if DEBUG: print(f"Placing category:\n{node.category}")
                     node.setPos(-1900, -1900 + yOffset)
                     if i % 2 == 0:
-                        yOffset += 300
+                        yOffset += 575
                     else:
-                        xOffset += 100
+                        xOffset += 400
                 else:
                     if DEBUG: print("node has parents")
                     yOffset = 0
@@ -463,12 +517,14 @@ class EditorWidget(QWidget):
                         depth = depth + 1
                         y = node.grNode.y()
                         child.setPos(xOffset, y + yOffset)
-                        xOffset += 100
-                        yOffset += 300
+                        xOffset += 400
+                        xOffset = xOffset * -1
+                        yOffset += 575
+                        yOffset = yOffset * -1
                         if DEBUG: print(f"Placing category:\n{node.category}")
                         self.placeNodes(child.children, depth, yOffset)
                     node.setPos(xOffset, yOffset)
-                    xOffset += 100
+                    xOffset += 400
         except Exception as ex:
             print("Exception caught placing nodes!")
             print(ex)

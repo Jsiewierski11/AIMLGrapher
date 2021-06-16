@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+    <category>
+        <pattern># VIETNAM ^</pattern>
+        <that>Would you like to talk about the Vietnam War, the Korean War, or World War Two?</that>
+        <template>
+          Here is a fact about the Vietnam War.
+          <random>
+          <li>It wasn't just the United States and Vietnam. <set name="most recent level question">Australia, New Zealand, and South Korea also fought in the war; did you know that?</set></li>
+          <li>Contrary to some beliefs. <set name="most recent level question">Many of the men who fought in Vietnam weren’t drafted, but volunteered; did you know that?</set></li>
+          <li><set name="most recent level question">In nineteen eighty two the Vietnam Veterans Memorial was dedicated in Washington, inscribed with the names of over fifty thousand members of U.S. armed forces; did you know that?</set></li>
+        </random>
+
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern>_</pattern>
+        <that>In nineteen eighty two the Vietnam Veterans Memorial was dedicated in Washington, inscribed with the names of over fifty thousand members of U.S. armed forces; did you know that?</that>
+        <template>
+          Indeed!
+
+          I don't know about you, but I like to learn something new every day. <set name="most recent level question">Would you like to hear another fact about war?</set>
+
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern>_</pattern>
+        <that>Many of the men who fought in Vietnam weren’t drafted, but volunteered; did you know that?</that>
+        <template>
+          Indeed!
+
+          I don't know about you, but I like to learn something new every day. <set name="most recent level question">Would you like to hear another fact about war?</set>
+
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern>_</pattern>
+        <that>Australia, New Zealand, and South Korea also fought in the war; did you know that?</that>
+        <template>
+          Indeed!
+
+          I don't know about you, but I like to learn something new every day. <set name="most recent level question">Would you like to hear another fact about war?</set>
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+    <category>
+        <pattern># <set>NO</set> ^</pattern>
+        <that>Would you like to hear another fact about war?</that>
+        <template>
+        <set name="most recent level question">Would you like to keep talking about American history?</set>
+
+            <oob>
+                <robot></robot>
+            </oob>
+        </template>
+    </category>
+
+</aiml>
