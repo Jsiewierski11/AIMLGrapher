@@ -186,28 +186,33 @@ class EditorWidget(QWidget):
             for index, tag in enumerate(reversed(template.tags)):
                 if DEBUG: print("Beginning of loop")
                 if DEBUG: print(f"Current tag: {tag}")
+                if index == 0:
+                    if tag.type == "set":
+                        return False
+                    else:
+                        return True
 
-                if isinstance(tag, str) is True:
-                    if DEBUG: print("String found before Condition or Random. Return True.")
-                    if tag.strip() != "":
-                        return False
-                    else:
-                        return True
-                # Check for <oob> tag
-                elif tag.type == "oob":
-                    if DEBUG: print("oob found, keep searching.")
-                elif tag.type == "condition" or tag.type == "random":
-                    if DEBUG: print("Condition or Random found before String. Return False.")
-                    return False
-                elif tag.type == "set":
-                    if DEBUG: print("Found set tag")
-                    if index == 0:
-                        return False
-                    else:
-                        return True
-            # Made it to end without finding anything
-            if DEBUG: print("Made it to end without finding anything. This should not happen!")
-            return False
+            #     if tag.type == "set":
+            #         if DEBUG: print("Found set tag")
+            #         if index == 0:
+            #             return False
+            #         else:
+            #             return True
+            #     elif isinstance(tag, str) is True:
+            #         if DEBUG: print("String found before Condition or Random. Return True.")
+            #         if tag.strip() != "":
+            #             return False
+            #         else:
+            #             return True
+            #     # Check for <oob> tag
+            #     elif tag.type == "oob":
+            #         if DEBUG: print("oob found, keep searching.")
+            #     elif tag.type == "condition" or tag.type == "random":
+            #         if DEBUG: print("Condition or Random found before String. Return False.")
+            #         return False
+            # # Made it to end without finding anything
+            # if DEBUG: print("Made it to end without finding anything. This should not happen!")
+            # return False
         except Exception as ex:
             print("Exception caught in EditorWidget - setContainsTail()")
             print(ex)
@@ -217,8 +222,8 @@ class EditorWidget(QWidget):
     """
     Function to find the sentence to be used for <that> tag of potential children.
     Returns a list of strings of last sentences in the <template> tag.
-        Sentences will only contain more than 1 element if there is a <random> or
-        <condition> tag. Sentences will then have a string for each <li> tag.
+    Sentences will only contain more than 1 element if there is a <random> or
+    <condition> tag. Sentences will then have a string for each <li> tag.
     """
     def getLastSentence(self, cat):
         if DEBUG: print("In getLastSentence()")
@@ -236,7 +241,8 @@ class EditorWidget(QWidget):
             random = template.findTag("random")
             if condition is None and random is None:
                 if DEBUG: print("no random or condition tag found in template")
-                if DEBUG: print(str(template))
+                # if DEBUG: print(str(template))
+
                 tempString = template.findTag("text")
                 if DEBUG: print(f"tempString: {tempString}")
 
@@ -249,24 +255,7 @@ class EditorWidget(QWidget):
                 if set_tag is not None:
                     sentences.append(set_tag.findTag("text"))
 
-
-                tempArr = tempString.split()
-                index = 0
-                for word in reversed(tempArr):
-                    if "." in word or "?" in word or "!" in word:
-                        if index == 0:
-                            if DEBUG: print("Found last punctuation mark on very first word. Keep searching.")
-                            if DEBUG: print(word)
-                        else:
-                            if DEBUG: print("Found the start of the last sentence")
-                            if DEBUG: print(word)
-                            arrSize = len(tempArr)
-                            start = arrSize - (index)
-                            lastSentence = tempArr[start:arrSize]
-                            lastSentence = " ".join(lastSentence)
-                            if DEBUG: print(f"appending: {lastSentence}")
-                            sentences.append(lastSentence)
-                    index = index + 1
+                sentences = self.findPunctuation(tempString, sentences)
 
                 # If we made it to end of array without finding another punctiation mark. return full text in template
                 if len(sentences) is 0:
@@ -275,7 +264,8 @@ class EditorWidget(QWidget):
                 return sentences
             else:
                 if DEBUG: print("template contains either a random or condition tag")
-                if DEBUG: print(str(template))
+                # if DEBUG: print(str(template))
+
                 contains_tail, tail = self.tableContainsTail(template)
                 if contains_tail is True:
                     sentences.append(tail)
@@ -290,38 +280,21 @@ class EditorWidget(QWidget):
 
                             # Checking for set tag
                             set_tag = li.findTag("set")
-                            setFound = False
+                            setHasTail = True
                             if set_tag is not None:
-                                print("Found set tag in condition block: {}".format(set_tag.findTag("text")))
-                                setFound = self.setContainsTail(li)
-                                if not setFound:
-                                    print("Set tag is last sentence")
+                                print("Found set tag in condition block")
+                                setHasTail = self.setContainsTail(li)
+                                if not setHasTail:
+                                    print("Set tag is last sentence, appending: {}".format(set_tag.findTag("text")))
                                     sentences.append(set_tag.findTag("text"))
+                            else:
+                                setHasTail = False
                                 
-
-                            liArr = liText.split()
-                            index = 0
                             punctuationExists = False
-                            for word in reversed(liArr):
-                                if "." in word or "?" in word or "!" in word:
-                                    if index == 0:
-                                        if DEBUG:print("Found last punctuation mark on very first word. Keep searching.")
-                                        if DEBUG: print(word)
-                                    else:
-                                        if DEBUG: print("Found the start of the last sentence")
-                                        if DEBUG: print(word)
-                                        arrSize = len(liArr)
-                                        start = arrSize - (index)
-                                        lastSentence = liArr[start:arrSize]
-                                        lastSentence = " ".join(lastSentence)
-                                        if DEBUG: print(f"appending: {lastSentence}")
-                                        sentences.append(lastSentence)
-                                        punctuationExists = True
-                                        break
-                                index = index + 1
+                            sentences = self.findPunctuation(liText, sentences)
                                     
                             # If made it to end of array without finding another punctiation mark. return full text in tag
-                            if punctuationExists is False and setFound is False:
+                            if punctuationExists is False and setHasTail is True:
                                 sentences.append(liText)
                         return sentences
                     else:
@@ -332,43 +305,55 @@ class EditorWidget(QWidget):
 
                             # Checking for set tag
                             set_tag = li.findTag("set")
-                            setFound = False
+                            setHasTail = True
                             if set_tag is not None:
-                                print("Found set tag in random block: {}".format(set_tag.findTag("text")))
-                                setFound = self.setContainsTail(li)
-                                if not setFound:
-                                    print("Set tag is last sentence")
+                                print("Found set tag in random block")
+                                setHasTail = self.setContainsTail(li)
+                                if not setHasTail:
+                                    print("Set tag is last sentence, appending: {}".format(set_tag.findTag("text")))
                                     sentences.append(set_tag.findTag("text"))
+                            else:
+                                setHasTail = False
 
-                            liArr = liText.split()
-                            index = 0
                             punctuationExists = False
-                            for word in reversed(liArr):
-                                if "." in word or "?" in word or "!" in word:
-                                    if index == 0:
-                                        if DEBUG: print("Found last punctuation mark on very first word. Keep searching.")
-                                        if DEBUG: print(word)
-                                    else:
-                                        if DEBUG: print("Found the start of the last sentence")
-                                        if DEBUG: print(word)
-                                        arrSize = len(liArr)
-                                        start = arrSize - (index)
-                                        lastSentence = liArr[start:arrSize]
-                                        lastSentence = " ".join(lastSentence)
-                                        if DEBUG: print(f"appending: {lastSentence}")
-                                        sentences.append(lastSentence)
-                                        punctuationExists = True
-                                        break
-                                index = index + 1
+                            sentences = self.findPunctuation(liText, sentences)
+
+
                             # If at the end of array without finding another punctiation mark. return full text in tag
-                            if punctuationExists is False and setFound is False:
+                            if punctuationExists is False and setHasTail is True:
                                 if DEBUG: print(f"appending: {liText}")
                                 sentences.append(liText)
                         return sentences
         except Exception as ex:
             print("Exception caught in EditorWidget - getLastSentence()")
             print(ex)
-            handleError(ex)
+            # handleError(ex)
+            return sentences
+
+
+    """
+    Helper function for findLastSentence that finds where the last punctuation is.
+    """
+    def findPunctuation(self, tempString, sentences):
+        tempArr = tempString.split()
+        index = 0
+        for word in reversed(tempArr):
+            if "." in word or "?" in word or "!" in word:
+                if index == 0:
+                    if DEBUG: print("Found last punctuation mark on very first word. Keep searching.")
+                    if DEBUG: print(word)
+                else:
+                    if DEBUG: print("Found the start of the last sentence")
+                    if DEBUG: print(word)
+                    arrSize = len(tempArr)
+                    start = arrSize - (index)
+                    lastSentence = tempArr[start:arrSize]
+                    lastSentence = " ".join(lastSentence)
+                    if DEBUG: print(f"appending: {lastSentence}")
+                    sentences.append(lastSentence)
+            index = index + 1
+
+        return sentences
 
     """
     Find child nodes in the scene and add edges based off of <that> tags
