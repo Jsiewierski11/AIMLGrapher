@@ -184,35 +184,11 @@ class EditorWidget(QWidget):
         try:
             print("In setContainsTail()")
             for index, tag in enumerate(reversed(template.tags)):
-                if DEBUG: print("Beginning of loop")
-                if DEBUG: print(f"Current tag: {tag}")
                 if index == 0:
                     if tag.type == "set":
                         return False
                     else:
                         return True
-
-            #     if tag.type == "set":
-            #         if DEBUG: print("Found set tag")
-            #         if index == 0:
-            #             return False
-            #         else:
-            #             return True
-            #     elif isinstance(tag, str) is True:
-            #         if DEBUG: print("String found before Condition or Random. Return True.")
-            #         if tag.strip() != "":
-            #             return False
-            #         else:
-            #             return True
-            #     # Check for <oob> tag
-            #     elif tag.type == "oob":
-            #         if DEBUG: print("oob found, keep searching.")
-            #     elif tag.type == "condition" or tag.type == "random":
-            #         if DEBUG: print("Condition or Random found before String. Return False.")
-            #         return False
-            # # Made it to end without finding anything
-            # if DEBUG: print("Made it to end without finding anything. This should not happen!")
-            # return False
         except Exception as ex:
             print("Exception caught in EditorWidget - setContainsTail()")
             print(ex)
@@ -257,7 +233,7 @@ class EditorWidget(QWidget):
 
                 sentences = self.findPunctuation(tempString, sentences)
 
-                # If we made it to end of array without finding another punctiation mark. return full text in template
+                # If we made it to end of array without finding another punctiation mark, return full text in template.
                 if len(sentences) is 0:
                     if DEBUG: print(f"appending: {tempString}")
                     sentences.append(tempString)
@@ -318,7 +294,6 @@ class EditorWidget(QWidget):
                             punctuationExists = False
                             sentences = self.findPunctuation(liText, sentences)
 
-
                             # If at the end of array without finding another punctiation mark. return full text in tag
                             if punctuationExists is False and setHasTail is True:
                                 if DEBUG: print(f"appending: {liText}")
@@ -340,16 +315,14 @@ class EditorWidget(QWidget):
         for word in reversed(tempArr):
             if "." in word or "?" in word or "!" in word:
                 if index == 0:
-                    if DEBUG: print("Found last punctuation mark on very first word. Keep searching.")
-                    if DEBUG: print(word)
+                    if DEBUG: print("Found last punctuation mark on very first word: \"{}\". Keep searching.".format(word))
                 else:
-                    if DEBUG: print("Found the start of the last sentence")
-                    if DEBUG: print(word)
+                    if DEBUG: print("Found the start of the last sentence: \"{}\"".format(word))
                     arrSize = len(tempArr)
                     start = arrSize - (index)
                     lastSentence = tempArr[start:arrSize]
                     lastSentence = " ".join(lastSentence)
-                    if DEBUG: print(f"appending: {lastSentence}")
+                    # if DEBUG: print(f"appending: {lastSentence}")
                     sentences.append(lastSentence)
             index = index + 1
 
@@ -476,40 +449,42 @@ class EditorWidget(QWidget):
     """
     Function to organize nodes based on parents and children
     """
-    def placeNodes(self, nodes, depth=0, yOffset=0):
-        # TODO: Recursively look through children. place parents on left, children on the right.
+    def placeNodes(self, nodes, depth=0, xOffset=0, yOffset=0):
+        # TODO: Recursively look through children. place parents on top, children below.
         try:
             if DEBUG: print("placing nodes")
-            if depth > 5:
+            if depth > 15:
                 if DEBUG: print("reached max depth")
                 return
 
-            xOffset = 500
+            # xOffset = 500
+            parentXOffset = 0
             
             for i, node in enumerate(nodes):
-                if len(node.parents) is 0:
-                    if DEBUG: print("node has no parents place to the left.")
+                if len(node.parents) is 0 and len(node.children) is 0:
+                    if DEBUG: print("node has no parents or children (Root level node)")
                     if DEBUG: print(f"Placing category:\n{node.category}")
-                    node.setPos(-1900, -1900 + yOffset)
-                    if i % 2 == 0:
-                        yOffset += 575
-                    else:
-                        xOffset += 400
+                    node.setPos(parentXOffset, 0)
+                    parentXOffset += 425
+                if len(node.parents) is 0 and len(node.children) > 0:
+                    if DEBUG: print("node has no parents, only children (Root level node)")
+                    node.setPos(parentXOffset, 0 + (300*depth))
+                    parentXOffset += 425
                 else:
-                    if DEBUG: print("node has parents")
+                    if DEBUG: print("node has parents and children")
                     yOffset = 0
                     for child in node.children:
                         depth = depth + 1
                         y = node.grNode.y()
-                        child.setPos(xOffset, y + yOffset)
-                        xOffset += 400
-                        xOffset = xOffset * -1
-                        yOffset += 575
-                        yOffset = yOffset * -1
+                        child.setPos(xOffset, y + (500*depth))
+                        xOffset += 300
+                        
                         if DEBUG: print(f"Placing category:\n{node.category}")
-                        self.placeNodes(child.children, depth, yOffset)
-                    node.setPos(xOffset, yOffset)
-                    xOffset += 400
+                        self.placeNodes(child.children, depth, xOffset)
+                    
+                    # Setting position for first child node
+                    y = node.grNode.y()
+                    node.setPos(xOffset, y + (100 * (depth+1)))
         except Exception as ex:
             print("Exception caught placing nodes!")
             print(ex)

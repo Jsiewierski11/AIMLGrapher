@@ -139,12 +139,12 @@ class EditorWindow(QMainWindow):
                 # Iterate through topic and place categories
                 for category in cat.tags:
                     thatToCheck = self.editSpace.graphview.getLastSentence(category)
-                    if DEBUG: print("got last sentence of category")
+                    if DEBUG: print("got last sentence of category: {}".format(thatToCheck))
                     title = "Category: " + category.cat_id
                     aNode = Node(self.editSpace.graphview.scene, title, category)
-                    if DEBUG: print("created node")
+                    # if DEBUG: print("created node")
                     aNode.content.wdg_label.displayVisuals(category)
-                    if DEBUG: print("displayed contents on node")
+                    # if DEBUG: print("displayed contents on node")
 
                     if thatToCheck is not None:
                         for that in thatToCheck:
@@ -157,17 +157,16 @@ class EditorWindow(QMainWindow):
                     for node in self.editSpace.graphview.scene.nodes:
                         node.updateConnectedEdges()
 
-                    aNode.content.catClicked.connect(self.editSpace.graphview.categoryClicked) # connecting signals coming from Content Widget
             elif cat.type == "comment":
                 print("Comment found, don't display comments on graphview.")
             else:
                 thatToCheck = self.editSpace.graphview.getLastSentence(cat)
-                if DEBUG: print("got last sentence of category")
+                if DEBUG: print("got last sentence of category: {}".format(thatToCheck))
                 title = "Category: " + cat.cat_id
                 aNode = Node(self.editSpace.graphview.scene, title, cat)
-                if DEBUG: print("created node")
+                # if DEBUG: print("created node")
                 aNode.content.wdg_label.displayVisuals(cat)
-                if DEBUG: print("displayed contents on node")
+                # if DEBUG: print("displayed contents on node")
 
                 if thatToCheck is not None:
                     for that in thatToCheck:
@@ -179,8 +178,7 @@ class EditorWindow(QMainWindow):
 
                 for node in self.editSpace.graphview.scene.nodes:
                     node.updateConnectedEdges()
-
-                aNode.content.catClicked.connect(self.editSpace.graphview.categoryClicked) # connecting signals coming from Content Widget
+                    
         except Exception as ex:
             print("Exception caught in TabController - create_category_graph_view()")
             print(ex)
@@ -373,7 +371,6 @@ class EditorWindow(QMainWindow):
 
             if DEBUG: print("Finished creating " + str(numCats) + " categories")
             if DEBUG: print("file import successful")
-            self.editSpace.graphview.placeNodes(self.editSpace.graphview.scene.nodes)
             importSuccessful()
         except Exception as ex:
             handleError(ex)

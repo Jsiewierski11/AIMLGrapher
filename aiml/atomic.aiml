@@ -5,4 +5,10 @@
         <template>Ok I will try.<oob><robot></robot></oob>
         </template>
     </category>
+
+    <category>
+        <pattern>YOU CAN DO WORSE</pattern>
+        <template>Ok I will try to do better.<oob><robot></robot></oob>
+        </template>
+    </category>
 </aiml>
