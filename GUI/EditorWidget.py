@@ -450,41 +450,56 @@ class EditorWidget(QWidget):
     Function to organize nodes based on parents and children
     """
     def placeNodes(self, nodes, depth=0, xOffset=0, yOffset=0):
-        # TODO: Recursively look through children. place parents on top, children below.
+        # TODO: Recursively look through children. Place parents on top, children below.
         try:
             if DEBUG: print("placing nodes")
             if depth > 15:
                 if DEBUG: print("reached max depth")
                 return
 
-            # xOffset = 500
             parentXOffset = 0
             
             for i, node in enumerate(nodes):
                 if len(node.parents) is 0 and len(node.children) is 0:
-                    if DEBUG: print("node has no parents or children (Root level node)")
+                    if DEBUG: print("Node has no parents or children (Root level node)")
                     if DEBUG: print(f"Placing category:\n{node.category}")
                     node.setPos(parentXOffset, 0)
-                    parentXOffset += 425
+                    # parentXOffset = (abs(parentXOffset) + 425)
+                    if i % 2 == 0: 
+                        parentXOffset = parentXOffset * -1
+                    else:
+                        # parentXOffset = (abs(parentXOffset) + 425)
+                        parentXOffset = node.grNode.x() + 425
+
                 if len(node.parents) is 0 and len(node.children) > 0:
-                    if DEBUG: print("node has no parents, only children (Root level node)")
+                    if DEBUG: print("Node has no parents, only children (Root level node)")
+                    if DEBUG: print(f"Placing category:\n{node.category}")
                     node.setPos(parentXOffset, 0 + (300*depth))
-                    parentXOffset += 425
+
+                    if i % 2 == 0: 
+                        parentXOffset = parentXOffset * -1
+                    else:
+                        parentXOffset = node.grNode.x() + 425
                 else:
-                    if DEBUG: print("node has parents and children")
+                    if DEBUG: print("Node has parents and children")
                     yOffset = 0
                     for child in node.children:
                         depth = depth + 1
                         y = node.grNode.y()
-                        child.setPos(xOffset, y + (500*depth))
-                        xOffset += 300
+                        child.setPos(xOffset, y + (300*depth))
                         
                         if DEBUG: print(f"Placing category:\n{node.category}")
-                        self.placeNodes(child.children, depth, xOffset)
+                        self.placeNodes(child.children, depth)
+                    
+                    if i % 2 == 0: 
+                        parentXOffset = parentXOffset * -1
+                    else:
+                        parentXOffset = node.grNode.x() + 425
                     
                     # Setting position for first child node
                     y = node.grNode.y()
-                    node.setPos(xOffset, y + (100 * (depth+1)))
+                    node.setPos(parentXOffset, y + (100 * (depth+1)))
+                
         except Exception as ex:
             print("Exception caught placing nodes!")
             print(ex)
