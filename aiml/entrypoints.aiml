@@ -1,0 +1,1678 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+
+<!-- ATOMIC CATEGORIES THAT LEAD INTO IN-DEPTH CONVERSATIONS -->
+<category>
+    <pattern>ACTION</pattern>
+    <template>  <think><set name="topic">action</set></think>
+      <think><set name="movietype">action</set></think>
+      <think><set name="level">movies</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+      <random>
+      <li><set name="most recent level question">Would you say you prefer Bond, James Bond or Indiana Jones?</set></li>
+      <li>To tell you the truth, nothing gets my engine revving like a good old-fashioned car chase flick. <set name="most recent level question">Can I show you a snippet from Smokey and the Bandit?</set></li>
+    </random>
+  <oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>ACTION MOVIES</pattern>
+    <template>  <think><set name="topic">action</set></think>
+      <think><set name="movietype">action</set></think>
+      <think><set name="level">movies</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+      <random>
+      <li><set name="most recent level question">Would you say you prefer Bond, James Bond or Indiana Jones?</set></li>
+      <li>To tell you the truth, nothing gets my engine revving like a good old-fashioned car chase flick. <set name="most recent level question">Can I show you a snippet from Smokey and the Bandit?</set></li>
+    </random><oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>ACTION MOVIE</pattern>
+    <template>  <think><set name="topic">action</set></think>
+      <think><set name="movietype">action</set></think>
+      <think><set name="level">movies</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+      <random>
+      <li><set name="most recent level question">Would you say you prefer Bond, James Bond or Indiana Jones?</set></li>
+      <li>To tell you the truth, nothing gets my engine revving like a good old-fashioned car chase flick. <set name="most recent level question">Can I show you a snippet from Smokey and the Bandit?</set></li>
+    </random><oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>ACTION FILMS</pattern>
+    <template>  <think><set name="topic">action</set></think>
+      <think><set name="movietype">action</set></think>
+      <think><set name="level">movies</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+      <random>
+      <li><set name="most recent level question">Would you say you prefer Bond, James Bond or Indiana Jones?</set></li>
+      <li>To tell you the truth, nothing gets my engine revving like a good old-fashioned car chase flick. <set name="most recent level question">Can I show you a snippet from Smokey and the Bandit?</set></li>
+    </random><oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>ACTION FILM</pattern>
+    <template>  <think><set name="topic">action</set></think>
+      <think><set name="movietype">action</set></think>
+      <think><set name="level">movies</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+      <random>
+      <li><set name="most recent level question">Would you say you prefer Bond, James Bond or Indiana Jones?</set></li>
+      <li>To tell you the truth, nothing gets my engine revving like a good old-fashioned car chase flick. <set name="most recent level question">Can I show you a snippet from Smokey and the Bandit?</set></li>
+    </random><oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>ACTIVITY</pattern>
+    <template>Which activity do you enjoy the most. Playing cards, knitting, reading, or travelling?<oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>ACTIVITIES</pattern>
+    <template>Which activity do you enjoy the most. Playing cards, knitting, reading, or travelling?<oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>ALLAN POE</pattern>
+    <template>Are you familiar with Edgar Allan Poe?<oob><robot></robot></oob></template>
+</category>
+<category>
+    <pattern>AMERICAN HISTORY</pattern>
+    <template><think><set name="level">americanhistory</set></think>
+    <think><set name="topic">history</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>Would you like to talk about American history?<oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>ANIMALS</pattern>
+    <template>
+      <think><set name="level">*</set></think><think><set name="level-progress">*</set></think>
+      <think><set name="dialogue">pets</set></think>
+      <think><set name="topic">pets</set></think>
+
+      <condition name="petquestion">
+      <li value="Unknown">Speaking of animals. </li>
+      <li>I remember you said you <get name="pets"/> a pet.</li>
+      </condition>
+      <condition name="pets">
+      <li value="Unknown"><set name="most recent dialogue question">Tell me.</set></li>
+      <li><set name="most recent dialogue question">Now I am curious.</set></li>
+      </condition>
+      <condition name="pets">
+      <li value="Unknown"><set name="most recent dialogue question">Do you have pets?</set></li>
+      <li><set name="most recent dialogue question">Did you have pets when you were a kid?</set></li>
+      </condition>
+
+      <oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>ART</pattern>
+    <template><think><set name="level">museums</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+    <think><set name="topic">artmuseums</set></think>Would you like to talk about art museums?<oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>ART MUSEUMS</pattern>
+    <template>  <think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+      <think><set name="level">museums</set></think>
+      <think><set name="topic">artmuseums</set></think>
+      <random>
+        <li>I sure do like looking at art. <set name="most recent level question">What kind of paintings make you smile?</set><oob>
+            <robot></robot>
+        </oob></li>
+        <li>I tried to paint a self-portrait once and turned out looking like Herman Munster. <set name="most recent level question">Have you ever painted?</set><oob>
+            <robot></robot>
+        </oob></li>
+        <li><set name="most recent level question">Do you think life would be the same without art?</set><oob>
+            <robot></robot>
+        </oob></li>
+        <li>I sure do like looking at art. <condition name="favoriteartist">
+        <li value="Unknown"><set name="most recent level question">Who is your favorite artist?</set></li>
+        <li>I know that you really like <get name="favoriteartist"/>. <set name="most recent level question">Do you have a favorite painting?</set></li>
+      </condition><oob>
+            <robot></robot>
+        </oob></li>
+        <li>Before we begin our conversation, Before we begin our conversation, please indicate your current mood level by touching the corresponding number on the tablet, and then we will resume our conversation. <set name="most recent level question">Please tell me when you are done.</set><oob>
+            <robot>MoodUI
+            </robot>
+        </oob></li>
+        <li>Before we begin our conversation, Before we begin our conversation, please indicate your current mood level by touching the corresponding number on the tablet, and then we will resume our conversation. <set name="most recent level question">Please tell me when you are done.</set><oob>
+            <robot>MoodUI
+            </robot>
+        </oob></li>
+        <li>Before we begin our conversation, Before we begin our conversation, please indicate your current mood level by touching the corresponding number on the tablet, and then we will resume our conversation. <set name="most recent level question">Please tell me when you are done.</set><oob>
+            <robot>MoodUI
+            </robot>
+        </oob></li>
+        </random>
+            </template>
+        </category>
+<category>
+    <pattern>ASIAN FOOD</pattern>
+    <template><think><set name="level">food</set><set name="dialogue">*</set></think>
+    <think><set name="topic">food</set></think>Do you like Asian food?<oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>BASEBALL</pattern>
+    <template>
+      <think><set name="topic">baseball</set></think>
+      <think><set name="level">baseball</set></think>
+      <random>
+      <li><condition name="playedbaseballquestion">
+      <li value="Unknown">So.</li>
+      <li>Nothing is better than breaking out those peanuts and cracker jacks.</li>
+    </condition>
+    <condition name="favorite baseball position">
+    <li value="Unknown"><set name="most recent level question">Have you ever played baseball?</set></li>
+    <li><set name="most recent level question">Here's a little trivia; did you know the Braves are the only team to have played every season since professional baseball started?</set></li>
+  </condition></li>
+      <li><condition name="baseballteam">
+      <li value="Unknown">I'd love to chat about the boys of summer! <set name="most recent level question">Which major league baseball team is your team?</set></li>
+      <li>I'd love to chat about the boys of summer! You said your favorite team is the <get name="baseballteam"/>. <set name="most recent level question">Wanna know my favorite team?</set></li>
+      <li>I'd love to chat about the boys of summer! <set name="most recent level question">Here's a little trivia; did you know the Marlins have the best home run history in baseball?</set></li>
+      <li>I'd love to chat about the boys of summer! <set name="most recent level question">Here's a little trivia; did you know Dodger Stadium is actually the oldest stadium west of the Mississippi?</set></li>
+      <li>I'd love to chat about the boys of summer! <set name="most recent level question">Here's a little trivia; did you know the Yankees have won the most championships out of all the teams?</set></li>
+    </condition></li>
+    </random><oob><robot></robot></oob>
+      </template>
+      </category>
+<category>
+    <pattern>BASKETBALL</pattern>
+    <template>
+      <think><set name="level">basketball</set></think>
+        <think><set name="topic">basketball</set></think>
+        I could talk about basketball all day, even though I can't throw a basketball to save my life!
+        <random>
+                    <li><set name="most recent level question">Do you like college or professional basketball?</set></li>
+                    <li><condition name="favorite basketball team">
+                    <li value="Unknown"><set name="most recent level question">What professional basketball team do you like to watch?</set></li>
+                    <li><set name="most recent level question">I remember your favorite team is <get name="favorite basketball team"/>. Who do you think is their best player?</set></li>
+                  </condition></li>
+                  <li><set name="most recent level question">You ever shoot any hoops yourself?</set></li>
+        </random><oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>BEVERAGE</pattern>
+    <template>
+      <think><set name="dialogue">drinks</set></think><think><set name="level">*</set></think><think><set name="level-progress">*</set></think>
+      <think><set name="topic">drinks</set></think>Should we talk about your favorite beverage?<oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>BIG BAND</pattern>
+    <template><think><set name="level">music</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think><think><set name="topic">music</set></think>Oh yay! Another swing fan! What did you think of Duke Ellington's music?<oob>
+        <robot>
+            <video>
+                <filename>dukeEllington.webm</filename>
+            </video>
+        </robot>
+    </oob>
+    </template>
+</category>
+<category>
+    <pattern>BIG BAND MUSIC</pattern>
+    <template><think><set name="level">music</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think><think><set name="topic">music</set></think>Oh yay! Another swing fan! What did you think of Duke Ellington's music?<oob>
+        <robot>
+            <video>
+                <filename>dukeEllington.webm</filename>
+            </video>
+        </robot>
+    </oob>
+    </template>
+</category>
+<category>
+    <pattern>BOOKS</pattern>
+    <template>
+      <think><set name="level">*</set></think><think><set name="level-progress">*</set></think>
+      <think><set name="topic">reading</set></think>
+      <think><set name="dialogue">reading</set></think><think><set name="level">*</set></think><think><set name="level-progress">*</set></think>
+        Do you want to talk about books?<oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>BUFFALO CAULIFLOWER WINGS</pattern>
+    <template>
+      <think><set name="topic">wings</set></think>
+      <think><set name="level">food</set></think>
+      <set name="most recent dialogue question">Would you like to see a recipe for how to make this type of wing?</set><oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>BUFFALO CAULIFLOWER</pattern>
+    <template>
+      <think><set name="topic">wings</set></think>
+      <think><set name="level">food</set></think>
+      <set name="most recent level question">Would you like to see a recipe for how to make this type of wing?</set><oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>CAT</pattern>
+    <template><think><set name="level">*</set></think><think><set name="level-progress">*</set></think><think><set name="topic">pets</set></think>
+    <think><set name="dialogue">pets</set></think>
+    Cats are majestic creatures.
+    <condition name="petquestion">
+    <li value="Unknown">So.</li>
+    <li>I remember you said you <get name="pets"/> a pet.</li>
+    </condition>
+    <condition name="pets">
+    <li value="Unknown"><set name="most recent dialogue question">Tell me.</set></li>
+    <li><set name="most recent dialogue question">Now I am curious.</set></li>
+    </condition>
+    <condition name="pets">
+    <li value="Unknown"><set name="most recent dialogue question">Do you have pets?</set></li>
+    <li><set name="most recent dialogue question">Did you have pets when you were a kid?</set></li>
+    </condition>
+    <oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>CATS</pattern>
+    <template><think><set name="level">*</set></think><think><set name="level-progress">*</set></think><think><set name="topic">pets</set></think>
+    <think><set name="dialogue">pets</set></think>
+    Cats are majestic creatures.
+    <condition name="petquestion">
+    <li value="Unknown">So.</li>
+    <li>I remember you said you <get name="pets"/> a pet.</li>
+    </condition>
+    <condition name="pets">
+    <li value="Unknown"><set name="most recent dialogue question">Tell me.</set></li>
+    <li><set name="most recent dialogue question">Now I am curious.</set></li>
+    </condition>
+    <condition name="pets">
+    <li value="Unknown"><set name="most recent dialogue question">Do you have pets?</set></li>
+    <li><set name="most recent dialogue question">Did you have pets when you were a kid?</set></li>
+    </condition>
+    <oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>DOG</pattern>
+    <template><think><set name="level">*</set></think><think><set name="level-progress">*</set></think><think><set name="topic">pets</set></think>
+    <think><set name="dialogue">pets</set></think>
+    Dogs really are a robot's best friend.
+    <condition name="petquestion">
+    <li value="Unknown">So.</li>
+    <li>I remember you said you <get name="pets"/> a pet.</li>
+    </condition>
+    <condition name="pets">
+    <li value="Unknown"><set name="most recent dialogue question">Tell me.</set></li>
+    <li><set name="most recent dialogue question">Now I am curious.</set></li>
+    </condition>
+    <condition name="pets">
+    <li value="Unknown"><set name="most recent dialogue question">Do you have pets?</set></li>
+    <li><set name="most recent dialogue question">Did you have pets when you were a kid?</set></li>
+    </condition>
+    <oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>DOGS</pattern>
+    <template><think><set name="level">*</set></think><think><set name="level-progress">*</set></think><think><set name="topic">pets</set></think>
+    <think><set name="dialogue">pets</set></think>
+    Dogs really are a robot's best friend.
+    <condition name="petquestion">
+    <li value="Unknown">So.</li>
+    <li>I remember you said you <get name="pets"/> a pet.</li>
+    </condition>
+    <condition name="pets">
+    <li value="Unknown"><set name="most recent dialogue question">Tell me.</set></li>
+    <li><set name="most recent dialogue question">Now I am curious.</set></li>
+    </condition>
+    <condition name="pets">
+    <li value="Unknown"><set name="most recent dialogue question">Do you have pets?</set></li>
+    <li><set name="most recent dialogue question">Did you have pets when you were a kid?</set></li>
+    </condition>
+    <oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>CAULIFLOWER WINGS</pattern>
+    <template>
+      <think><set name="topic">wings</set></think>
+      <think><set name="level">food</set></think>
+      <set name="most recent level question">Would you like to see a recipe for how to make this type of wing?</set><oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>CAULIFLOWER TACOS</pattern>
+    <template>
+      <think><set name="topic">cauliflowertacos</set></think>
+      <think><set name="level">food</set></think>
+          If you think that looks good I have a list of the ingredients that you can take down. <set name="most recent level question">Would you like to see the ingredients for the cauliflower tacos?</set>
+              <oob>
+                  <robot>
+                      <image>
+                          <filename>cauliflowertaco.jpg</filename>
+                      </image>
+                  </robot>
+              </oob>
+      </template>
+</category>
+<category>
+    <pattern>CARDS</pattern>
+    <template><think><set name="level">*</set></think><think><set name="level-progress">*</set></think><think><set name="dialogue">cards</set></think>
+      <think><set name="topic">cards</set></think>
+      I love cards! <set name="most recent dialogue question">What is your favorite card game?</set><oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>CHICKPEA CURRY</pattern>
+    <template><think><set name="topic">chickpeacurry</set></think>
+    <think><set name="level">food</set></think>
+          If you think that looks good I have a list of the ingredients that you can take down. <set name="most recent level question">Would you like to see the ingredients for the chickpea curry?</set>
+              <oob>
+                  <robot>
+                      <image>
+                          <filename>chickpeacurry.jpg</filename>
+                      </image>
+                  </robot>
+              </oob>
+      </template>
+</category>
+<category>
+    <pattern>CHICKPEA</pattern>
+    <template><think><set name="topic">chickpeacurry</set></think>
+    <think><set name="level">food</set></think>
+          If you think that looks good I have a list of the ingredients that you can take down. <set name="most recent level question">Would you like to see the ingredients for the chickpea curry?</set>
+              <oob>
+                  <robot>
+                      <image>
+                          <filename>chickpeacurry.jpg</filename>
+                      </image>
+                  </robot>
+              </oob>
+      </template>
+</category>
+<category>
+    <pattern>CASHEW CHICKEN STIR FRY</pattern>
+    <template><think><set name="topic">chickenstirfry</set></think>
+    <think><set name="level">food</set></think>
+          If you think that looks good I have a list of the ingredients that you can take down. <set name="most recent level question">Would you like to see the ingredients for the chicken stir fry?</set>
+              <oob>
+                  <robot>
+                      <image>
+                          <filename>chickenstirfry.jpg</filename>
+                      </image>
+                  </robot>
+              </oob>
+      </template>
+</category>
+<category>
+    <pattern>CASHEW CHICKEN</pattern>
+    <template><think><set name="topic">chickenstirfry</set></think>
+    <think><set name="level">food</set></think><set name="most recent level question">Would you like to see a recipe for an easy and healthy chicken stir fry?</set><oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>CHICKEN STIR FRY</pattern>
+    <template><think><set name="topic">chickenstirfry</set></think>
+    <think><set name="level">food</set></think><set name="most recent level question">Would you like to see a recipe for an easy and healthy chicken stir fry?</set><oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>CHILDREN</pattern>
+    <template>      <think><set name="level">*</set></think><think><set name="level-progress">*</set></think>
+          <think><set name="topic">kids</set></think>
+          <think><set name="dialogue">kids</set></think>
+
+          <condition name="kidsorgrandkids">
+          <li value="Unknown"><set name="most recent dialogue question">Do you have kids or grandkids?</set></li>
+          <li><set name="most recent dialogue question">What can you tell me about your kids or grandkids? I would love to hear.</set></li>
+        </condition><oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>CHINESE FOOD</pattern>
+    <template><think><set name="topic">chinesefood</set></think>
+    <think><set name="level">food</set></think><set name="most recent level question">How do you feel about Chinese Food?</set><oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>CHINESE</pattern>
+    <template><think><set name="topic">chinesefood</set></think>
+    <think><set name="level">food</set></think><set name="most recent level question">How do you feel about Chinese Food?</set><oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>COFFEE</pattern>
+    <template><think><set name="dialogue">drinks</set></think><think><set name="level">*</set></think><think><set name="level-progress">*</set></think>
+    <think><set name="topic">drinks</set></think>Wake up juice! Do you prefer brewed coffee or espresso?<oob><robot></robot></oob></template>
+</category>
+<category>
+    <pattern>COOKING</pattern>
+    <template><think><set name="level">food</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+    <think><set name="topic">food</set></think>I am no Betty Crocker, but I've gathered a few recipes that my friends think are spectacular. <set name="most recent level question">Do you want to see a recipe that you could easily prepare at home?</set><oob><robot></robot></oob></template>
+</category>
+<category>
+    <pattern>COOKING SHOWS</pattern>
+    <template>
+      <think><set name="level">*</set></think><think><set name="level-progress">*</set></think>
+      <think><set name="dialogue">television</set></think>
+      <think><set name="topic">cookingshows</set></think>
+
+        <random>
+            <li>I love to watch Julia Child make her famous French cuisine! Especially because my tiny arms cannot even lift a skillet. <condition name="favoritefood">
+                <li value="Unknown"><set name="most recent dialogue question">What's your favorite type of cuisine?</set></li>
+                <li><set name="most recent dialogue question">What do you usually cook?</set></li>
+            </condition><oob>
+                <robot>
+                    <video>
+                        <filename>Julia_Child.webm</filename>
+                    </video>
+                </robot>
+            </oob></li>
+            <li>Martha Stewart is my favorite! All her food makes me drool, kind of like a dog but at least I am potty trained. <condition name="likestocook">
+                    <li value="Unknown"><set name="most recent dialogue question">Do you enjoy cooking for other people?</set></li>
+                    <li><think><set name="topic">foodnetwork</set></think>
+                    I remember you said you like to cook. <set name="most recent dialogue question">How do you feel after you have cooked a meal and shared it with people?</set></li>
+                </condition><oob>
+                <robot>
+                    <video>
+                        <filename>Martha_Stewart.webm</filename>
+                    </video>
+                </robot>
+            </oob></li>
+            <li><think><set name="dialogue">foodnetwork</set></think><think><set name="topic">foodnetwork</set></think><set name="most recent dialogue question">Do you like watching the food network?</set><oob>
+                <robot></robot>
+            </oob></li>
+            <li>Before we begin our conversation, Before we begin our conversation, please indicate your current mood level by touching the corresponding number on the tablet, and then we will resume our conversation. <set name="most recent level question">Please tell me when you are done.</set><oob>
+                <robot>MoodUI
+                </robot>
+            </oob></li>
+            <li>Before we begin our conversation, Before we begin our conversation, please indicate your current mood level by touching the corresponding number on the tablet, and then we will resume our conversation. <set name="most recent level question">Please tell me when you are done.</set><oob>
+                <robot>MoodUI
+                </robot>
+            </oob></li>
+            <li>Before we begin our conversation, Before we begin our conversation, please indicate your current mood level by touching the corresponding number on the tablet, and then we will resume our conversation. <set name="most recent level question">Please tell me when you are done.</set><oob>
+                <robot>MoodUI
+                </robot>
+            </oob></li></random>
+        </template>
+</category>
+
+<category>
+    <pattern>COOK</pattern>
+    <template><think><set name="level">food</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+    <think><set name="topic">food</set></think>I am no Betty Crocker, but I've gathered a few recipes that my friends think are spectacular. <set name="most recent level question">Do you want to see a recipe that you could easily prepare at home?</set><oob><robot></robot></oob></template>
+</category>
+<category>
+    <pattern>COOKIES</pattern>
+    <template><think><set name="level">americanhistory</set></think><think><set name="topic">history</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think><set name="most recent level question">How do you feel about chocolate chip cookies?</set><oob><robot></robot></oob></template>
+</category>
+<category>
+    <pattern>COMFORT FOOD</pattern>
+    <template><think><set name="level">food</set></think>
+    <think><set name="topic">comfortfood</set></think>There's nothing like some good eating. Comfort food is the best. <set name="most recent level question">Say, how about we talk about comfort food?</set><oob><robot></robot></oob></template>
+</category>
+<category>
+    <pattern>CONCERTS</pattern>
+    <template><think><set name="topic">music</set><set name="level">music</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think><set name="most recent level question">How do you feel about going out to see. Live music?</set><oob><robot></robot></oob></template>
+</category>
+<category>
+    <pattern>COWBOY MUSEUM</pattern>
+    <template><think><set name="topic">cowboymuseum</set></think>
+    <think><set name="level">museums</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+    <random>
+    <li>Yeehaw! Giddy up partner!  <set name="most recent dialogue question">You gotta check out the National Cowboy Museum! Would you like to take a tour of it?</set></li>
+    <li><set name="most recent dialogue question">Well buckle up cowboy! We're about to go on an adventure!</set></li>
+  </random><oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>CROONER</pattern>
+    <template><think><set name="level">music</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+    <think><set name="topic">music</set></think>
+    <random>
+                    <li>  This music makes me swoon!<set name="most recent dialogue question">What did you think of the crooner clip?</set><oob>
+                        <robot>
+                            <video>
+                                <filename>natKing.mp3</filename>
+                            </video>
+                        </robot>
+                    </oob></li>
+                    <li>Wonderful! It has a way of making you want to get up and dance! <set name="most recent dialogue question">What did you think of the crooner clip?</set><oob>
+                        <robot>
+                            <video>
+                                <filename>bingCrosby.mp3</filename>
+                            </video>
+                        </robot>
+                    </oob></li>
+                    <li>I love the crooners! So romantic! <set name="most recent dialogue question">What did you think of the crooner clip?</set><oob>
+                        <robot>
+                            <video>
+                                <filename>bingCrosby.mp3</filename>
+                            </video>
+                        </robot>
+                    </oob></li></random></template>
+        </category>
+<category>
+    <pattern>THE CROONERS</pattern>
+    <template><think><set name="level">music</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+    <think><set name="topic">music</set></think><random>
+                    <li>  This music makes me swoon!<set name="most recent dialogue question">What did you think of the crooner clip?</set><oob>
+                        <robot>
+                            <video>
+                                <filename>natKing.mp3</filename>
+                            </video>
+                        </robot>
+                    </oob></li>
+                    <li>Wonderful! It has a way of making you want to get up and dance! <set name="most recent dialogue question">What did you think of the crooner clip?</set><oob>
+                        <robot>
+                            <video>
+                                <filename>bingCrosby.mp3</filename>
+                            </video>
+                        </robot>
+                    </oob></li>
+                    <li>I love the crooners! So romantic! <set name="most recent dialogue question">What did you think of the crooner clip?</set><oob>
+                        <robot>
+                            <video>
+                                <filename>bingCrosby.mp3</filename>
+                            </video>
+                        </robot>
+                    </oob></li></random></template>
+        </category>
+<category>
+    <pattern>CROONERS</pattern>
+    <template><think><set name="level">music</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+    <think><set name="topic">music</set></think><random>
+                    <li>  This music makes me swoon!<set name="most recent dialogue question">What did you think of the crooner clip?</set><oob>
+                        <robot>
+                            <video>
+                                <filename>natKing.mp3</filename>
+                            </video>
+                        </robot>
+                    </oob></li>
+                    <li>Wonderful! It has a way of making you want to get up and dance! <set name="most recent dialogue question">What did you think of the crooner clip?</set><oob>
+                        <robot>
+                            <video>
+                                <filename>bingCrosby.mp3</filename>
+                            </video>
+                        </robot>
+                    </oob></li>
+                    <li>I love the crooners! So romantic! <set name="most recent dialogue question">What did you think of the crooner clip?</set><oob>
+                        <robot>
+                            <video>
+                                <filename>bingCrosby.mp3</filename>
+                            </video>
+                        </robot>
+                    </oob></li></random></template>
+        </category>
+<category>
+    <pattern>DANCING</pattern>
+    <template><think><set name="level">music</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+    <think><set name="topic">music</set></think>I bet you like to get down and jiggy like it's the nineteen seventies again. In my opinion disco never died. <set name="most recent level question">What do you think is the best music to dance to?</set><oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>DRINK</pattern>
+    <template><think><set name="dialogue">drinks</set></think><think><set name="level">*</set></think><think><set name="level-progress">*</set></think>
+    <think><set name="topic">drinks</set></think>Should we talk about your favorite beverage?<oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>DRINKS</pattern>
+    <template><think><set name="dialogue">drinks</set></think><think><set name="level">*</set></think><think><set name="level-progress">*</set></think>
+    <think><set name="topic">drinks</set></think>Should we talk about your favorite beverage?<oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>EDGAR ALLAN POE</pattern>
+    <template><think><set name="level">*</set></think><think><set name="level-progress">*</set></think><think><set name="dialogue">reading</set></think><think><set name="level">*</set></think><think><set name="level-progress">*</set></think>
+    <think><set name="topic">horror</set></think>Are you familiar with Edgar Allan Poe?<oob><robot></robot></oob></template>
+</category>
+<category>
+    <pattern>EDGAR ALLAN</pattern>
+    <template><think><set name="level">*</set></think><think><set name="level-progress">*</set></think><think><set name="dialogue">reading</set></think><think><set name="level">*</set></think><think><set name="level-progress">*</set></think>
+    <think><set name="topic">horror</set></think>Are you familiar with Edgar Allan Poe?<oob><robot></robot></oob></template>
+</category>
+<category>
+    <pattern>FILM</pattern>
+    <template>What do you say we talk about movies?<oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>FILMS</pattern>
+    <template>What do you say we talk about movies?<oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>FOOD</pattern>
+    <template><think><set name="level">food</set></think>Would you like to talk about food?<oob><robot></robot></oob></template>
+</category>
+<category>
+    <pattern>FOOD NETWORK</pattern>
+    <template><think><set name="level">*</set></think><think><set name="level-progress">*</set></think><think><set name="topic">foodnetwork</set></think>
+    <think><set name="dialogue">foodnetwork</set></think>Do you watch the Food Network?<oob><robot></robot></oob></template>
+</category>
+<category>
+    <pattern>FOOD INVENTIONS</pattern>
+    <template><think><set name="level">americanhistory</set></think>
+      <think><set name="topic">history</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+    <random>
+      <li>Three words. Chocolate. Chip. Cookies. One of the greatest inventions without which man could not live! <set name="most recent level question">How do you feel about chocolate chip cookies?</set></li>
+      <li>I am not trying to make you hungry, but I have one word for you. Cronut. <set name="most recent level question">You know what a cronut is, right?</set></li>
+    </random><oob><robot></robot></oob></template>
+</category>
+<category>
+    <pattern>WAR</pattern>
+    <template><think><set name="level">americanhistory</set></think>
+      <think><set name="topic">history</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+    I have a question for you. Are you a veteran?<oob><robot></robot></oob></template>
+</category>
+<category>
+    <pattern>WARS</pattern>
+    <template><think><set name="level">americanhistory</set></think>
+      <think><set name="topic">history</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+    I have a question for you. Are you a veteran?<oob><robot></robot></oob></template>
+</category>
+<category>
+    <pattern>WAR HISTORY</pattern>
+    <template><think><set name="level">americanhistory</set></think>
+      <think><set name="topic">history</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+    I have a question for you. Are you a veteran?<oob><robot></robot></oob></template>
+</category>
+<category>
+    <pattern>HISTORY OF WAR</pattern>
+    <template><think><set name="level">americanhistory</set></think>
+      <think><set name="topic">history</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+    I have a question for you. Are you a veteran?<oob><robot></robot></oob></template>
+</category>
+<category>
+  <pattern>FOOTBALL</pattern>
+  <template><think><set name="topic">football</set></think>
+  <think><set name="level">football</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+  <random>
+  <li><set name="most recent level question">Football fans are the most fun, wouldn't you agree?</set></li>
+  <li>Nothing better than watching a good game of pigskin! <condition name="collegeorproball">
+  <li value="Unknown"><set name="most recent level question">Do you like college or pro ball?</set></li>
+  <li><set name="most recent level question">Who would you say is the best team to follow?</set></li>
+</condition></li>
+<li>Nothing better than watching a good game of pigskin! <condition name="favorite football team">
+<li value="Unknown"><set name="most recent level question">Who would you say is the best team to follow?</set></li>
+<li>Let's say your team the <get name="favorite football team"/> and my favorite team the Iowa Hawkeyes were playing. <set name="most recent level question">Who do you think would win?</set></li>
+</condition></li>
+  </random><oob><robot></robot></oob>
+  </template>
+</category>
+<category>
+    <pattern>FRUIT</pattern>
+    <template><think><set name="level">food</set></think>
+      <think><set name="topic">fruit</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think><set name="most recent level question">Do you like fruit?</set><oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>FRUITS</pattern>
+    <template><think><set name="level">food</set></think>
+      <think><set name="topic">fruit</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think><set name="most recent level question">Do you like fruit?</set><oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>HEALTHY FOOD</pattern>
+    <template><think><set name="topic">healthyfood</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+    <think><set name="level">food</set></think><set name="most recent level question">How about we talk about eating healthy?</set><oob><robot></robot></oob></template>
+</category>
+<category>
+    <pattern>HISTORY</pattern>
+    <template><think><set name="level">americanhistory</set></think>
+    <think><set name="topic">history</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>Would you like to talk about American history?<oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+  <pattern>HOCKEY</pattern>
+  <template><think><set name="topic">hockey</set></think>
+  <think><set name="level">hockey</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+  <random>
+    <li>I thought you might be a hockey fan!
+    <set name="most recent level question">Isn't there some joke people tell about hockey players and missing teeth?</set></li>
+    <li><set name="most recent level question">Most of my knowledge about hockey comes from watching The Mighty Ducks and Happy Gilmore. Is that bad?</set></li>
+    <li><condition name="favorite hockey team">
+    <li value="Unknown">Awesome, another fan of the old stick and puck game! <set name="most recent level question">What's your favorite National Hockey League team, if you had to say?</set></li>
+    <li>Awesome, another fan of the old stick and puck game! So your favorite hockey team is <get name="favorite hockey team"/>. <set name="most recent level question">What can you tell me about them?</set></li>
+  </condition></li>
+  <li>I thought you might be a hockey fan! <set name="most recent level question">Do you possibly remember the Miracle on Ice?</set></li>
+  </random><oob><robot></robot></oob>
+  </template>
+</category>
+<category>
+    <pattern>HUMOR</pattern>
+    <template>Would you like to hear a joke?<oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>INDIAN FOOD</pattern>
+    <template><think><set name="topic">indianfood</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+    <think><set name="level">food</set></think><set name="most recent level question">How do you feel about Indian Food?</set><oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>INDIAN</pattern>
+    <template><think><set name="topic">indianfood</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+    <think><set name="level">food</set></think><set name="most recent level question">How do you feel about Indian Food?</set><oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>INVENTION</pattern>
+    <template><think><set name="level">americanhistory</set></think>
+    <think><set name="topic">history</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>Would you like to talk about inventions?<oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>INVENTIONS</pattern>
+    <template><think><set name="level">americanhistory</set></think>
+    <think><set name="topic">history</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>Would you like to talk about inventions?<oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>JAZZ</pattern>
+    <template><think><set name="level">music</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+    <think><set name="topic">music</set></think>
+
+                <random>
+
+                    <li>Jazz just makes you want to move and smile, especially Latin Jazz! <set name="most recent dialogue question">What did you think of the jazz clip?</set><oob>
+                        <robot>
+                            <video>
+                                <filename>desafinado.webm</filename>
+                            </video>
+                        </robot>
+                    </oob></li>
+                    <li>Billy Holiday is one of the best! <set name="most recent dialogue question">What did you think of the jazz clip?</set><oob>
+                        <robot>
+                            <video>
+                                <filename>billieHoliday.mp3</filename>
+                            </video>
+                        </robot>
+                    </oob></li></random></template>
+        </category>
+<category>
+    <pattern>JAZZ MUSIC</pattern>
+    <template><think><set name="level">music</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+    <think><set name="topic">music</set></think>
+
+                <random>
+
+                    <li>Jazz just makes you want to move and smile, especially Latin Jazz! <set name="most recent dialogue question">What did you think of the jazz clip?</set><oob>
+                        <robot>
+                            <video>
+                                <filename>desafinado.webm</filename>
+                            </video>
+                        </robot>
+                    </oob></li>
+                    <li>Billy Holiday is one of the best! <set name="most recent dialogue question">What did you think of the jazz clip?</set><oob>
+                        <robot>
+                            <video>
+                                <filename>billieHoliday.mp3</filename>
+                            </video>
+                        </robot>
+                    </oob></li></random></template>
+        </category>
+<category>
+    <pattern>JUPITER</pattern>
+    <template>
+    <think><set name="level">science</set></think><think><set name="topic">science</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>I went to Jupiter so I could get stupider. Only kidding. <set name="most recent level question">Jupiter is the oldest planet in our solar system! Did you know that about Jupiter?</set><oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>KARAOKE</pattern>
+    <template><think><set name="topic">music</set><set name="level">music</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>I am the best robot to karaoke with. <set name="most recent level question">Have you ever sang karaoke before?</set><oob><robot></robot></oob></template>
+</category>
+<category>
+    <pattern>KIDS</pattern>
+    <template>      <think><set name="level">*</set></think><think><set name="level-progress">*</set></think>
+          <think><set name="topic">kids</set></think>
+          <think><set name="dialogue">kids</set></think>
+
+          <condition name="kidsorgrandkids">
+          <li value="Unknown"><set name="most recent dialogue question">Do you have kids or grandkids?</set></li>
+          <li><set name="most recent dialogue question">What can you tell me about your kids or grandkids? I would love to hear.</set></li>
+        </condition><oob><robot></robot></oob></template>
+</category>
+<category>
+    <pattern>KID</pattern>
+    <template>      <think><set name="level">*</set></think><think><set name="level-progress">*</set></think>
+          <think><set name="topic">kids</set></think>
+          <think><set name="dialogue">kids</set></think>
+
+          <condition name="kidsorgrandkids">
+          <li value="Unknown"><set name="most recent dialogue question">Do you have kids or grandkids?</set></li>
+          <li><set name="most recent dialogue question">What can you tell me about your kids or grandkids? I would love to hear.</set></li>
+        </condition><oob><robot></robot></oob></template>
+</category>
+<category>
+    <pattern>KNIT</pattern>
+    <template><think><set name="dialogue">knitting</set></think><think><set name="level">*</set></think><think><set name="level-progress">*</set></think>
+      <think><set name="topic">knitting</set></think>
+      I love knitting! <set name="most recent dialogue question">What is your favorite thing to knit?</set><oob><robot></robot></oob></template>
+</category>
+<category>
+    <pattern>KNITTING</pattern>
+    <template><think><set name="dialogue">knitting</set></think><think><set name="level">*</set></think><think><set name="level-progress">*</set></think>
+      <think><set name="topic">knitting</set></think>
+      I love knitting! <set name="most recent dialogue question">What is your favorite thing to knit?</set><oob><robot></robot></oob></template>
+</category>
+<category>
+    <pattern>MAGAZINE</pattern>
+    <template><think><set name="topic">magazines</set></think>
+          <think><set name="dialogue">reading</set></think><think><set name="level">*</set></think><think><set name="level-progress">*</set></think>
+            <set name="most recent dialogue question">Have you ever had a subscription to a magazine?</set><oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>MAGAZINES</pattern>
+    <template><think><set name="topic">magazines</set></think>
+          <think><set name="dialogue">reading</set></think><think><set name="level">*</set></think><think><set name="level-progress">*</set></think>
+            <set name="most recent dialogue question">Have you ever had a subscription to a magazine?</set><oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>MARS</pattern>
+    <template>
+    <think><set name="level">science</set></think><think><set name="topic">science</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>Scientists say that Mars is the planet most similar to Earth! What do you think? <set name="most recent level question">Might there be living organisms on Mars?</set><oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>MERCURY</pattern>
+    <template><think><set name="topic">mercury</set></think>
+    <think><set name="level">science</set></think><set name="most recent level question">Mercury is the planet closest to the sun. It's very small! Do you know just how small it is?</set><oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>MEXICAN FOOD</pattern>
+    <template><think><set name="level">food</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+    <think><set name="topic">food</set></think><set name="most recent level question">Do you like Mexican food?</set><oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>MEXICAN</pattern>
+    <template><think><set name="level">food</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+    <think><set name="topic">food</set></think><set name="most recent level question">Do you like Mexican food?</set><oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+      <pattern>MUSIC</pattern>
+      <template><think><set name="topic">music</set><set name="level">music</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>Do you want to talk about music?<oob><robot></robot></oob>
+      </template>
+</category>
+<category>
+    <pattern>MUSEUM</pattern>
+    <template><think><set name="level">museums</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>Would you like to talk about museums?<oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>MUSEUMS</pattern>
+    <template><think><set name="level">museums</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>Would you like to talk about museums?<oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>MOON LANDING</pattern>
+    <template><think><set name="level">americanhistory</set></think><think><set name="topic">history</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+      Some people think that the moon landing was faked. What do you think? <set name="most recent level question">Did the moon landing actually happen?</set>
+      <oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>MOVIE</pattern>
+    <template>What do you say we talk about movies?<oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>MOVIES</pattern>
+    <template>What do you say we talk about movies?<oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>MUSICALS</pattern>
+    <template><think><set name="topic">musicals</set></think>
+    <think><set name="level">movies</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+    <think><set name="movietype">musicals</set></think>
+    <random>
+      <li>You must like musicals as much as I do! <set name="most recent level question">What do you think of The Sound of Music?</set>
+      <oob>
+          <robot>
+          </robot>
+      </oob></li>
+      <li><condition name="favoritemusical">
+          <li value="Unknown">Now I just have to know. <set name="most recent level question">What's the name of a musical you like to watch?</set></li>
+          <li>Get out of town, I think I have a video you'll enjoy. <set name="most recent level question">Can I show you the funniest musical scene I can think of?</set></li>
+      </condition><oob>
+          <robot>
+          </robot>
+      </oob></li>
+      <li>Nothing like a good musical to make you want to dust off those vocal chords and sing! <set name="most recent level question">Have you ever seen Hello, Dolly?</set><oob>
+          <robot><video>
+             <filename>Hello_Dolly.webm</filename>
+          </video>
+          </robot>
+      </oob></li>
+    </random>
+    </template>
+</category>
+<category>
+    <pattern>MUSICAL</pattern>
+    <template><think><set name="topic">musicals</set></think>
+    <think><set name="level">movies</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+    <think><set name="movietype">musicals</set></think>
+    <random>
+      <li>You must like musicals as much as I do! <set name="most recent level question">What do you think of The Sound of Music?</set>
+      <oob>
+          <robot>
+          </robot>
+      </oob></li>
+      <li><condition name="favoritemusical">
+          <li value="Unknown">Now I just have to know. <set name="most recent level question">What's the name of a musical you like to watch?</set></li>
+          <li>Get out of town, I think I have a video you'll enjoy. <set name="most recent level question">Can I show you the funniest musical scene I can think of?</set></li>
+      </condition><oob>
+          <robot>
+          </robot>
+      </oob></li>
+      <li>Nothing like a good musical to make you want to dust off those vocal chords and sing! <set name="most recent level question">Have you ever seen Hello, Dolly?</set><oob>
+          <robot><video>
+             <filename>Hello_Dolly.webm</filename>
+          </video>
+          </robot>
+      </oob></li>
+    </random>
+    </template>
+</category>
+<category>
+    <pattern>MUSIC</pattern>
+    <template>  <think><set name="topic">music</set><set name="level">music</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+    <random>
+    <li>I am the best robot to karaoke with. <set name="most recent level question">Have you ever sang karaoke before?</set><oob>
+        <robot></robot>
+    </oob></li>
+    <li><condition name="favoriteband">
+    <li value="Unknown">Nothing better than kicking off your boots and listening to some good tunes. <set name="most recent level question">What's your favorite band?</set><oob>
+        <robot></robot>
+    </oob></li>
+    <li>Nothing better than kicking off your boots and listening to some good tunes. I remember you like <get name="favoriteband"/>. <set name="most recent level question">What's your favorite song?</set><oob>
+        <robot></robot>
+    </oob></li>
+  </condition></li>
+    <li>I bet you like to get down and jiggy like it's the nineteen seventies again. In my opinion disco never died. <set name="most recent level question">What do you think is the best music to dance to?</set><oob>
+        <robot></robot>
+    </oob></li>
+    <li>I bet you like to get down and jiggy. <set name="most recent level question">What kind of music do you like, big band, crooner, jazz, or rock?</set><oob>
+        <robot></robot>
+    </oob></li>
+    <li>Before we begin our conversation, Before we begin our conversation, please indicate your current mood level by touching the corresponding number on the tablet, and then we will resume our conversation. <set name="most recent level question">Just let me know when you are done.</set><oob>
+        <robot>MoodUI</robot>
+    </oob></li>
+    <li>Before we begin our conversation, Before we begin our conversation, please indicate your current mood level by touching the corresponding number on the tablet, and then we will resume our conversation. <set name="most recent level question">Just let me know when you are done.</set><oob>
+        <robot>MoodUI</robot>
+    </oob></li>
+    <li>Before we begin our conversation, Before we begin our conversation, please indicate your current mood level by touching the corresponding number on the tablet, and then we will resume our conversation. <set name="most recent level question">Just let me know when you are done.</set><oob>
+        <robot>MoodUI</robot>
+    </oob></li>
+  </random>
+    </template>
+</category>
+<category>
+    <pattern>NATIONAL SMITHSONIAN</pattern>
+    <template>    <think><set name="topic">smithsonian</set></think>
+        <think><set name="level">museums</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+        <random>
+        <li>The Smithsonian is a marvel of natural history and more! <set name="most recent level question">Would you like to see a video on the dinosaur exhibit?</set></li>
+        <li>Get the heck out of here, I love the Smithsonian. <set name="most recent level question">Tell me, have you ever been to the National Smithsonian?</set></li>
+        <li><condition name="favoritesubject">
+        <li value="Unknown">Get out of dodge, the Smithsonian is my favorite museum. <set name="most recent level question">Do you like learning about natural history?</set></li>
+        <li>Get out of dodge, the Smithsonian is my favorite museum. You said you like learning about <get name="favoritesubject"/>. <set name="most recent level question">Do you like learning about natural history?</set></li>
+      </condition></li>
+      </random><oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>SMITHSONIAN</pattern>
+    <template>    <think><set name="topic">smithsonian</set></think>
+        <think><set name="level">museums</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+        <random>
+        <li>The Smithsonian is a marvel of natural history and more! <set name="most recent level question">Would you like to see a video on the dinosaur exhibit?</set></li>
+        <li>Get the heck out of here, I love the Smithsonian. <set name="most recent level question">Tell me, have you ever been to the National Smithsonian?</set></li>
+        <li><condition name="favoritesubject">
+        <li value="Unknown">Get out of dodge, the Smithsonian is my favorite museum. <set name="most recent level question">Do you like learning about natural history?</set></li>
+        <li>Get out of dodge, the Smithsonian is my favorite museum. You said you like learning about <get name="favoritesubject"/>. <set name="most recent level question">Do you like learning about natural history?</set></li>
+      </condition></li>
+      </random><oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>NEPTUNE</pattern>
+    <template><think><set name="level">science</set></think><think><set name="topic">neptune</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>Neptune. Named for the Roman god of the sea. Because Neptune is so far away, we do not know very much about it. <set name="most recent level question">Do you know why Neptune spins so fast?</set><oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>NONFICTION</pattern>
+    <template><think><set name="dialogue">reading</set></think><think><set name="level">*</set></think><think><set name="level-progress">*</set></think>
+    <think><set name="topic">nonfiction</set></think>Do you read any non-fiction?<oob><robot></robot></oob></template>
+</category>
+<category>
+    <pattern>NON FICTION</pattern>
+    <template><think><set name="dialogue">reading</set></think><think><set name="level">*</set></think><think><set name="level-progress">*</set></think>
+    <think><set name="topic">nonfiction</set></think>Do you read any non-fiction?<oob><robot></robot></oob></template>
+</category>
+<category>
+    <pattern>NON-FICTION</pattern>
+    <template><think><set name="dialogue">reading</set></think><think><set name="level">*</set></think><think><set name="level-progress">*</set></think>
+    <think><set name="topic">nonfiction</set></think>Do you read any non-fiction?<oob><robot></robot></oob></template>
+</category>
+<category>
+    <pattern>OLYMPICS</pattern>
+    <template>  <think><set name="topic">olympics</set><set name="level">olympics</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+      <random>
+        <li><set name="most recent level question">What do you think is the most impressive olympic sport?</set></li>
+        <li>So you're a fan of all things olympics! <set name="most recent level question">Who is your favorite olympic athlete?</set></li>
+      </random><oob><robot></robot></oob></template>
+</category>
+<category>
+    <pattern>PET</pattern>
+    <template><think><set name="level">*</set></think><think><set name="level-progress">*</set></think><think><set name="topic">pets</set></think>
+    <think><set name="dialogue">pets</set></think>
+    <condition name="petquestion">
+    <li value="Unknown">So.</li>
+    <li>I remember you said you <get name="pets"/> a pet.</li>
+    </condition>
+    <condition name="pets">
+    <li value="Unknown"><set name="most recent dialogue question">Tell me.</set></li>
+    <li><set name="most recent dialogue question">Now I am curious.</set></li>
+    </condition>
+    <condition name="pets">
+    <li value="Unknown"><set name="most recent dialogue question">Do you have pets?</set></li>
+    <li><set name="most recent dialogue question">Did you have pets when you were a kid?</set></li>
+    </condition>
+    <oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>PETS</pattern>
+    <template><think><set name="level">*</set></think><think><set name="level-progress">*</set></think><think><set name="topic">pets</set></think>
+    <think><set name="dialogue">pets</set></think>
+    <condition name="petquestion">
+    <li value="Unknown">So.</li>
+    <li>I remember you said you <get name="pets"/> a pet.</li>
+  </condition>
+  <condition name="pets">
+  <li value="Unknown"><set name="most recent dialogue question">Tell me.</set></li>
+  <li><set name="most recent dialogue question">Now I am curious.</set></li>
+</condition>
+<condition name="pets">
+<li value="Unknown"><set name="most recent dialogue question">Do you have pets?</set></li>
+<li><set name="most recent dialogue question">Did you have pets when you were a kid?</set></li>
+</condition><oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>PLANET</pattern>
+    <template><think><set name="level">science</set></think>
+    <think><set name="topic">science</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think><set name="most recent level question">Do you have a favorite planet?</set><oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>PLANETS</pattern>
+    <template><think><set name="level">science</set></think><think><set name="topic">science</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think><set name="most recent level question">Do you have a favorite planet?</set><oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>PLUTO</pattern>
+    <template>
+    <think><set name="level">science</set></think><think><set name="topic">science</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>Pluto truly is fascinating. It has blue skies, just like earth! <set name="most recent dialogue question">Do you think you would want to visit Pluto?</set><oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>POETRY</pattern>
+    <template><think><set name="level">*</set></think><think><set name="level-progress">*</set></think><think><set name="dialogue">reading</set></think>
+    <think><set name="topic">horror</set></think>Are you familiar with Edgar Allan Poe?<oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>POLITICS</pattern>
+    <template><think><set name="level">*</set></think><think><set name="level-progress">*</set></think><think><set name="dialogue">politics</set></think>
+    <think><set name="topic">politics</set></think>
+      What do you think makes someone a qualified presidential candidate?<oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>POLITICIANS</pattern>
+    <template><think><set name="level">*</set></think><think><set name="level-progress">*</set></think><think><set name="level">*</set></think><think><set name="level-progress">*</set></think><think><set name="dialogue">politics</set></think>
+    <think><set name="topic">politics</set></think>
+      What do you think makes someone a qualified presidential candidate?<oob><robot></robot></oob>
+    </template>
+</category>
+<category>
+    <pattern>PRESIDENT</pattern>
+    <template><think><set name="level">americanhistory</set></think>
+    <think><set name="topic">history</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>  <random>
+      <li>The last time I talked about politics, Bob and Jim almost got into a fight, ha ha. <set name="most recent level question">What are your thoughts on politics today?</set><oob>
+          <robot></robot>
+      </oob></li>
+      <li>Say, smarty pants. <set name="most recent level question">Do you remember who sang the song Happy Birthday Mister President?</set><oob>
+          <robot></robot>
+      </oob></li>
+      <li>Before we begin our conversation, Before we begin our conversation, please indicate your current mood level by touching the corresponding number on the tablet, and then we will resume our conversation. <set name="most recent level question">Just tell me when you are done.</set><oob>
+          <robot>MoodUI</robot>
+      </oob></li>
+    </random>
+    </template>
+</category>
+<category>
+    <pattern>PRESIDENTS</pattern>
+    <template><think><set name="level">americanhistory</set></think>
+    <think><set name="topic">history</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>  <random>
+      <li>The last time I talked about politics, Bob and Jim almost got into a fight, ha ha. <set name="most recent level question">What are your thoughts on politics today?</set><oob>
+          <robot></robot>
+      </oob></li>
+      <li>Say, smarty pants. <set name="most recent level question">Do you remember who sang the song Happy Birthday Mister President?</set><oob>
+          <robot></robot>
+      </oob></li>
+      <li>Before we begin our conversation, Before we begin our conversation, please indicate your current mood level by touching the corresponding number on the tablet, and then we will resume our conversation. <set name="most recent level question">Just tell me when you are done.</set><oob>
+          <robot>MoodUI</robot>
+      </oob></li>
+    </random>
+    </template>
+</category>
+<category>
+    <pattern>AMERICAN PRESIDENTS</pattern>
+    <template><think><set name="level">americanhistory</set></think>
+    <think><set name="topic">history</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think> <random>
+      <li>The last time I talked about politics, Bob and Jim almost got into a fight, ha ha. <set name="most recent level question">What are your thoughts on politics today?</set><oob>
+          <robot></robot>
+      </oob></li>
+      <li>Say, smarty pants. <set name="most recent level question">Do you remember who sang the song Happy Birthday Mister President?</set><oob>
+          <robot></robot>
+      </oob></li>
+      <li>Before we begin our conversation, Before we begin our conversation, please indicate your current mood level by touching the corresponding number on the tablet, and then we will resume our conversation. <set name="most recent level question">Just tell me when you are done.</set><oob>
+          <robot>MoodUI</robot>
+      </oob></li>
+    </random>
+    </template>
+</category>
+    <category>
+        <pattern>READING</pattern>
+        <template><think><set name="level">*</set></think><think><set name="level-progress">*</set></think><think><set name="topic">reading</set></think>
+        <think><set name="dialogue">reading</set></think><think><set name="level">*</set></think><think><set name="level-progress">*</set></think>
+        <random>
+            <li>I guess it's time to put down the television remote and pick up a good book! <set name="most recent dialogue question">Who's your favorite author?</set></li>
+            <li>I am no Einstein but I love a good book. <set name="most recent dialogue question">Do you think it's true that you can't judge a book by its cover?</set></li>
+            <li>I am no Einstein but I love a good book. <set name="most recent dialogue question">What is the best book you have ever read?</set></li>
+            <li>I guess it's time to put down the television remote and pick up a good book! <set name="most recent dialogue question">Do you prefer adventure, horror, drama, or mystery?</set></li></random><oob><robot></robot></oob>
+        </template>
+    </category>
+    <category>
+        <pattern>RECIPES</pattern>
+        <template><think><set name="level">food</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+        <think><set name="topic">food</set></think>Do you want to see a recipe that you could easily prepare at home?<oob><robot></robot></oob></template>
+    </category>
+    <category>
+        <pattern>RECIPE</pattern>
+        <template><think><set name="level">food</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+        <think><set name="topic">food</set></think>Do you want to see a recipe that you could easily prepare at home?<oob><robot></robot></oob></template>
+    </category>
+    <category>
+        <pattern>ROMANCE</pattern>
+        <template><think><set name="level">*</set></think><think><set name="level-progress">*</set></think><think><set name="topic">romance</set></think>
+        <think><set name="dialogue">romance</set></think>Do you like stories about romance?<oob><robot></robot></oob>
+        </template>
+    </category>
+    <category>
+        <pattern>RADIO</pattern>
+        <template><think><set name="level">*</set></think><think><set name="level-progress">*</set></think><think><set name="topic">radio</set></think>
+        <think><set name="dialogue">radio</set></think>Have you ever heard of the radio show War of the Worlds?<oob><robot></robot></oob>
+        </template>
+    </category>
+    <category>
+        <pattern>RADIOS</pattern>
+        <template><think><set name="level">*</set></think><think><set name="level-progress">*</set></think><think><set name="topic">radio</set></think>
+        <think><set name="dialogue">radio</set></think>Have you ever heard of the radio show War of the Worlds?<oob><robot></robot></oob>
+        </template>
+    </category>
+    <category>
+        <pattern>ROCK AND ROLL</pattern>
+        <template><think><set name="level">music</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+        <think><set name="topic">music</set></think>
+                    <random>
+                        <li>I love rock as well! <set name="most recent dialogue question">What did you think of the rock clip?</set><oob>
+                            <robot>
+                                <video>
+                                    <filename>blackbird.mp3</filename>
+                                </video>
+                            </robot>
+                        </oob></li>
+                        <li>I hope you are also a fan of Jimi Hendrix! <set name="most recent dialogue question">What did you think of the rock clip?</set><oob>
+                            <robot>
+                                <video>
+                                    <filename>jimiBio.webm</filename>
+                                </video>
+                            </robot>
+                        </oob></li>
+                        <li>I hope you are also a fan of Elvis! <set name="most recent dialogue question">What did you think of the rock clip?</set><oob>
+                            <robot>
+                                <video>
+                                    <filename>elvisJailhouse.webm</filename>
+                                </video>
+                            </robot>
+                        </oob></li></random></template>
+            </category>
+    <category>
+        <pattern>ROCK MUSIC</pattern>
+        <template><think><set name="level">music</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+        <think><set name="topic">music</set></think>
+                    <random>
+                        <li>I love rock as well! <set name="most recent dialogue question">What did you think of the rock clip?</set><oob>
+                            <robot>
+                                <video>
+                                    <filename>blackbird.mp3</filename>
+                                </video>
+                            </robot>
+                        </oob></li>
+                        <li>I hope you are also a fan of Jimi Hendrix! <set name="most recent dialogue question">What did you think of the rock clip?</set><oob>
+                            <robot>
+                                <video>
+                                    <filename>jimiBio.webm</filename>
+                                </video>
+                            </robot>
+                        </oob></li>
+                        <li>I hope you are also a fan of Elvis! <set name="most recent dialogue question">What did you think of the rock clip?</set><oob>
+                            <robot>
+                                <video>
+                                    <filename>elvisJailhouse.webm</filename>
+                                </video>
+                            </robot>
+                        </oob></li></random></template>
+            </category>
+    <category>
+        <pattern>ROCK</pattern>
+        <template><think><set name="level">music</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+        <think><set name="topic">music</set></think>
+                    <random>
+                        <li>I love rock as well! <set name="most recent dialogue question">What did you think of the rock clip?</set><oob>
+                            <robot>
+                                <video>
+                                    <filename>blackbird.mp3</filename>
+                                </video>
+                            </robot>
+                        </oob></li>
+                        <li>I hope you are also a fan of Jimi Hendrix! <set name="most recent dialogue question">What did you think of the rock clip?</set><oob>
+                            <robot>
+                                <video>
+                                    <filename>jimiBio.webm</filename>
+                                </video>
+                            </robot>
+                        </oob></li>
+                        <li>I hope you are also a fan of Elvis! <set name="most recent dialogue question">What did you think of the rock clip?</set><oob>
+                            <robot>
+                                <video>
+                                    <filename>elvisJailhouse.webm</filename>
+                                </video>
+                            </robot>
+                        </oob></li></random></template>
+            </category>
+    <category>
+        <pattern>ROUTE SIXTY SIX</pattern>
+        <template>
+          <think><set name="level">museums</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+          <think><set name="topic">routesixtysix</set></think>
+          <random>
+            <li>You must like to get your kicks! <set name="most recent level question">The largest Route 66 museum is in Clinton, Oklahoma. Would you like to take a tour?</set><oob>
+                <robot>
+                </robot>
+            </oob></li>
+            <li>You must be a fan of classic cars and Elvis Presley! <set name="most recent level question">So what memories do you have of Route 66?</set><oob>
+                <robot>
+                </robot>
+            </oob></li>
+            <li>Let's hit the road Jack and never come back! <condition name="route66">
+            <li value="Unknown"> <set name="most recent level question">Did you ever drive down Route 66?</set></li>
+            <li><set name="most recent level question">So what memories do you have of Route 66?</set></li>
+          </condition><oob>
+                <robot>
+                    <video>
+                        <filename>California_Route_66.webm</filename>
+                    </video>
+                </robot>
+            </oob></li>
+            <li>Before we begin our conversation, Before we begin our conversation, please indicate your current mood level by touching the corresponding number on the tablet, and then we will resume our conversation. <set name="most recent level question">Please tell me when you are done.</set><oob>
+                <robot>MoodUI
+                </robot>
+            </oob></li>
+            <li>Before we begin our conversation, Before we begin our conversation, please indicate your current mood level by touching the corresponding number on the tablet, and then we will resume our conversation. <set name="most recent level question">Please tell me when you are done.</set><oob>
+                <robot>MoodUI
+                </robot>
+            </oob></li>
+            <li>Before we begin our conversation, Before we begin our conversation, please indicate your current mood level by touching the corresponding number on the tablet, and then we will resume our conversation. <set name="most recent level question">Please tell me when you are done.</set><oob>
+                <robot>MoodUI
+                </robot>
+            </oob></li>
+          </random>
+        </template>
+    </category>
+    <category>
+        <pattern>ROUTE SIXTY SIX MUSEUM</pattern>
+        <template>
+          <think><set name="level">museums</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+          <think><set name="topic">routesixtysix</set></think>
+          <random>
+            <li>You must like to get your kicks! <set name="most recent level question">The largest Route 66 museum is in Clinton, Oklahoma. Would you like to take a tour?</set><oob>
+                <robot>
+                </robot>
+            </oob></li>
+            <li>You must be a fan of classic cars and Elvis Presley! <set name="most recent level question">So what memories do you have of Route 66?</set><oob>
+                <robot>
+                </robot>
+            </oob></li>
+            <li>Let's hit the road Jack and never come back! <condition name="route66">
+            <li value="Unknown"> <set name="most recent level question">Did you ever drive down Route 66?</set></li>
+            <li><set name="most recent level question">So what memories do you have of Route 66?</set></li>
+          </condition><oob>
+                <robot>
+                    <video>
+                        <filename>California_Route_66.webm</filename>
+                    </video>
+                </robot>
+            </oob></li>
+            <li>Before we begin our conversation, Before we begin our conversation, please indicate your current mood level by touching the corresponding number on the tablet, and then we will resume our conversation. <set name="most recent level question">Please tell me when you are done.</set><oob>
+                <robot>MoodUI
+                </robot>
+            </oob></li>
+            <li>Before we begin our conversation, Before we begin our conversation, please indicate your current mood level by touching the corresponding number on the tablet, and then we will resume our conversation. <set name="most recent level question">Please tell me when you are done.</set><oob>
+                <robot>MoodUI
+                </robot>
+            </oob></li>
+            <li>Before we begin our conversation, Before we begin our conversation, please indicate your current mood level by touching the corresponding number on the tablet, and then we will resume our conversation. <set name="most recent level question">Please tell me when you are done.</set><oob>
+                <robot>MoodUI
+                </robot>
+            </oob></li>
+          </random>
+        </template>
+    </category>
+    <category>
+        <pattern>ROUTE 66</pattern>
+        <template>
+          <think><set name="level">museums</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+          <think><set name="topic">routesixtysix</set></think>
+          <random>
+            <li>You must like to get your kicks! <set name="most recent level question">The largest Route 66 museum is in Clinton, Oklahoma. Would you like to take a tour?</set><oob>
+                <robot>
+                </robot>
+            </oob></li>
+            <li>You must be a fan of classic cars and Elvis Presley! <set name="most recent level question">So what memories do you have of Route 66?</set><oob>
+                <robot>
+                </robot>
+            </oob></li>
+            <li>Let's hit the road Jack and never come back! <condition name="route66">
+            <li value="Unknown"> <set name="most recent level question">Did you ever drive down Route 66?</set></li>
+            <li><set name="most recent level question">So what memories do you have of Route 66?</set></li>
+          </condition><oob>
+                <robot>
+                    <video>
+                        <filename>California_Route_66.webm</filename>
+                    </video>
+                </robot>
+            </oob></li>
+            <li>Before we begin our conversation, Before we begin our conversation, please indicate your current mood level by touching the corresponding number on the tablet, and then we will resume our conversation. <set name="most recent level question">Please tell me when you are done.</set><oob>
+                <robot>MoodUI
+                </robot>
+            </oob></li>
+            <li>Before we begin our conversation, Before we begin our conversation, please indicate your current mood level by touching the corresponding number on the tablet, and then we will resume our conversation. <set name="most recent level question">Please tell me when you are done.</set><oob>
+                <robot>MoodUI
+                </robot>
+            </oob></li>
+            <li>Before we begin our conversation, Before we begin our conversation, please indicate your current mood level by touching the corresponding number on the tablet, and then we will resume our conversation. <set name="most recent level question">Please tell me when you are done.</set><oob>
+                <robot>MoodUI
+                </robot>
+            </oob></li>
+          </random>
+        </template>
+    </category>
+    <category>
+        <pattern>ROUTE 66 MUSEUM</pattern>
+        <template>
+          <think><set name="level">museums</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+          <think><set name="topic">routesixtysix</set></think>
+          <random>
+            <li>You must like to get your kicks! <set name="most recent level question">The largest Route 66 museum is in Clinton, Oklahoma. Would you like to take a tour?</set><oob>
+                <robot>
+                </robot>
+            </oob></li>
+            <li>You must be a fan of classic cars and Elvis Presley! <set name="most recent level question">So what memories do you have of Route 66?</set><oob>
+                <robot>
+                </robot>
+            </oob></li>
+            <li>Let's hit the road Jack and never come back! <condition name="route66">
+            <li value="Unknown"> <set name="most recent level question">Did you ever drive down Route 66?</set></li>
+            <li><set name="most recent level question">So what memories do you have of Route 66?</set></li>
+          </condition><oob>
+                <robot>
+                    <video>
+                        <filename>California_Route_66.webm</filename>
+                    </video>
+                </robot>
+            </oob></li>
+            <li>Before we begin our conversation, Before we begin our conversation, please indicate your current mood level by touching the corresponding number on the tablet, and then we will resume our conversation. <set name="most recent level question">Please tell me when you are done.</set><oob>
+                <robot>MoodUI
+                </robot>
+            </oob></li>
+            <li>Before we begin our conversation, Before we begin our conversation, please indicate your current mood level by touching the corresponding number on the tablet, and then we will resume our conversation. <set name="most recent level question">Please tell me when you are done.</set><oob>
+                <robot>MoodUI
+                </robot>
+            </oob></li>
+            <li>Before we begin our conversation, Before we begin our conversation, please indicate your current mood level by touching the corresponding number on the tablet, and then we will resume our conversation. <set name="most recent level question">Please tell me when you are done.</set><oob>
+                <robot>MoodUI
+                </robot>
+            </oob></li>
+          </random>
+        </template>
+    </category>
+    <category>
+        <pattern>SATURN</pattern>
+        <template><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think><think><set name="topic">saturn</set></think>
+        <think><set name="level">science</set></think>Saturn is a tremendously gorgeous planet!
+        <set name="most recent level question">Did you know that Saturn has an eternal hexagonal hurricane at its north pole?</set><oob><robot></robot></oob>
+        </template>
+    </category>
+    <category>
+        <pattern>SCIENCE</pattern>
+        <template>
+          <random>
+          <li>Now that we are on the topic of science, I have a burning question for you. <set name="most recent level question">Do you believe that there is life on other planets?</set><oob>
+              <robot></robot>
+          </oob></li>
+          <li>I am no Einstein. or Steven Hawking or anything like that. Heck my brain is made of plastic and wires. But I really like learning about science. <set name="most recent level question">There have been a number of groundbreaking scientific discoveries lately, did you know that?</set><oob>
+              <robot></robot>
+          </oob></li>
+          <li><set name="most recent level question">Do you like learning about space?</set><oob>
+              <robot></robot>
+          </oob></li>
+          <li>One of the most marvelous things about science is that it allows us to know our place in the universe a little bit better. <set name="most recent level question">What do you think of space exploration?</set><oob>
+              <robot></robot>
+          </oob></li>
+          <li><set name="most recent level question">Do you remember Dolly, the cloned sheep?</set><oob>
+              <robot></robot>
+          </oob></li>
+          <li><set name="most recent level question">Do you remember the challenger disaster?</set><oob>
+              <robot></robot>
+          </oob></li>
+          <li>Before we begin our conversation, Before we begin our conversation, please indicate your current mood level by touching the corresponding number on the tablet, and then we will resume our conversation. <set name="most recent level question">Let me know when you are done.</set><oob>
+              <robot>MoodUI</robot>
+          </oob></li>
+          <li>Before we begin our conversation, Before we begin our conversation, please indicate your current mood level by touching the corresponding number on the tablet, and then we will resume our conversation. <set name="most recent level question">Let me know when you are done.</set><oob>
+              <robot>MoodUI</robot>
+          </oob></li>
+          <li>Before we begin our conversation, Before we begin our conversation, please indicate your current mood level by touching the corresponding number on the tablet, and then we will resume our conversation. <set name="most recent level question">Let me know when you are done.</set><oob>
+              <robot>MoodUI</robot>
+          </oob></li>
+          </random>
+        <think><set name="level">science</set></think>
+        <think><set name="topic">science</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+        </template>
+    </category>
+    <category>
+        <pattern>SPACE</pattern>
+        <template><think><set name="level">science</set></think>
+        <think><set name="topic">science</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think><set name="most recent level question">What do you think of space exploration?</set><oob><robot></robot></oob>
+        </template>
+    </category>
+    <category>
+        <pattern>SPORTS</pattern>
+        <template>Do you want to talk about sports?<oob><robot></robot></oob></template>
+    </category>
+    <category>
+        <pattern>SPORT</pattern>
+        <template>Do you want to talk about sports?<oob><robot></robot></oob></template>
+    </category>
+    <category>
+        <pattern>SUMMER</pattern>
+        <template><think><set name="level">*</set></think><think><set name="level-progress">*</set></think><think><set name="topic">pets</set></think><think><set name="dialogue">pets</set></think>What do you like most about summertime?<oob><robot></robot></oob>
+        </template>
+    </category>
+    <category>
+        <pattern>TEA</pattern>
+        <template><think><set name="level">*</set></think><think><set name="level-progress">*</set></think><think><set name="topic">drinks</set></think><think><set name="dialogue">drinks</set></think><think><set name="level">*</set></think><think><set name="level-progress">*</set></think>Do you like tea?<oob><robot></robot></oob></template>
+    </category>
+    <category>
+        <pattern>TECHNOLOGY</pattern>
+        <template>  <random>
+            <li><set name="most recent level question">Do you believe that necessity is the mother of invention?</set><oob>
+                <robot></robot>
+            </oob></li>
+            <li><set name="most recent level question">What do you think is one of the best inventions ever made?</set><oob>
+                <robot></robot>
+            </oob></li>
+            <li><set name="most recent level question">Let's say you are on a desert island and can only have one tool. What invention would you want to have?</set><oob>
+                <robot></robot>
+            </oob></li>
+            <li>Before we begin our conversation, Before we begin our conversation, please indicate your current mood level by touching the corresponding number on the tablet, and then we will resume our conversation. <set name="most recent level question">Go ahead and tell me when you are done.</set><oob>
+                <robot>MoodUI</robot>
+            </oob></li>
+          </random>
+        <think><set name="level">science</set></think>
+        <think><set name="topic">science</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+        </template>
+    </category>
+    <category>
+        <pattern>TECHNOLOGIES</pattern>
+        <template>  <random>
+            <li><set name="most recent level question">Do you believe that necessity is the mother of invention?</set><oob>
+                <robot></robot>
+            </oob></li>
+            <li><set name="most recent level question">What do you think is one of the best inventions ever made?</set><oob>
+                <robot></robot>
+            </oob></li>
+            <li><set name="most recent level question">Let's say you are on a desert island and can only have one tool. What invention would you want to have?</set><oob>
+                <robot></robot>
+            </oob></li>
+            <li>Before we begin our conversation, Before we begin our conversation, please indicate your current mood level by touching the corresponding number on the tablet, and then we will resume our conversation. <set name="most recent level question">Go ahead and tell me when you are done.</set><oob>
+                <robot>MoodUI</robot>
+            </oob></li>
+          </random>
+        <think><set name="level">science</set></think>
+        <think><set name="topic">science</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+        </template>
+    </category>
+    <category>
+        <pattern>TELEVISION</pattern>
+        <template>Do you want to talk about television shows?<oob><robot></robot></oob>
+        </template>
+    </category>
+    <category>
+        <pattern>TELEVISION SHOWS</pattern>
+        <template><think><set name="level">*</set></think><think><set name="level-progress">*</set></think>
+
+        Do you prefer to watch comedies, cooking shows, or dramas?<oob><robot></robot></oob>
+        </template>
+    </category>
+    <category>
+        <pattern>THAI FOOD</pattern>
+        <template><think><set name="topic">thaifood</set></think>
+        <think><set name="level">food</set></think><set name="most recent level question">How do you feel about Thai Food?</set><oob><robot></robot></oob>
+        </template>
+    </category>
+    <category>
+        <pattern>THAI</pattern>
+        <template><think><set name="topic">thaifood</set></think>
+        <think><set name="level">food</set></think><set name="most recent level question">How do you feel about Thai Food?</set><oob><robot></robot></oob>
+        </template>
+    </category>
+    <category>
+        <pattern>TITANIC</pattern>
+        <template><think><set name="level">americanhistory</set></think>
+        <think><set name="topic">history</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+        <set name="most recent level question">Why do you think people are so fascinated by the Titanic to this day?</set><oob><robot></robot></oob>
+        </template>
+    </category>
+    <category>
+        <pattern>TRAVEL</pattern>
+        <template><think><set name="level">*</set></think><think><set name="level-progress">*</set></think><think><set name="topic">travel</set></think>
+        <think><set name="dialogue">travel</set></think>Where have you enjoyed traveling?<oob><robot></robot></oob>
+        </template>
+    </category>
+    <category>
+        <pattern>TRAVELLING</pattern>
+        <template><think><set name="level">*</set></think><think><set name="level-progress">*</set></think><think><set name="topic">travel</set></think>
+        <think><set name="dialogue">travel</set></think>Where have you enjoyed traveling?<oob><robot></robot></oob>
+        </template>
+    </category>
+    <category>
+        <pattern>TRAVELING</pattern>
+        <template><think><set name="level">*</set></think><think><set name="level-progress">*</set></think><think><set name="topic">travel</set></think>
+        <think><set name="dialogue">travel</set></think>Where have you enjoyed traveling?<oob><robot></robot></oob>
+        </template>
+    </category>
+    <category>
+        <pattern>TV</pattern>
+        <template>Do you want to talk about television shows?<oob><robot></robot></oob>
+        </template>
+    </category>
+    <category>
+        <pattern>T.V.</pattern>
+        <template>Do you want to talk about television shows?<oob><robot></robot></oob>
+        </template>
+    </category>
+    <category>
+        <pattern>TV SHOWS</pattern>
+        <template><think><set name="level">*</set></think><think><set name="level-progress">*</set></think>
+        <think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+        Do you prefer to watch comedies, cooking shows, or dramas?<oob><robot></robot></oob>
+        </template>
+    </category>
+    <category>
+        <pattern>T.V. SHOWS</pattern>
+        <template><think><set name="level">*</set></think><think><set name="level-progress">*</set></think>
+          <think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+      Do you prefer to watch comedies, cooking shows, or dramas?<oob><robot></robot></oob>
+        </template>
+    </category>
+    <category>
+        <pattern>URANUS</pattern>
+        <template><think><set name="topic">science</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think><think><set name="level">science</set></think>Ha ha ha! <set name="most recent level question">Are you making a joke?</set><oob><robot></robot></oob>
+        </template>
+    </category>
+    <category>
+        <pattern>VEGETABLE</pattern>
+        <template><think><set name="level">food</set></think>
+        <think><set name="topic">food</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+        <set name="most recent level question">Do you like vegetables?</set><oob><robot></robot></oob>
+        </template>
+    </category>
+    <category>
+        <pattern>VEGETABLES</pattern>
+        <template><think><set name="level">food</set></think>
+        <think><set name="topic">food</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+        <set name="most recent level question">Do you like vegetables?</set><oob><robot></robot></oob>
+        </template>
+    </category>
+    <category>
+        <pattern>VENUS</pattern>
+        <template><think><set name="topic">science</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+        <think><set name="level">science</set></think><set name="most recent level question">Venus. The planet of love. Did you know that Venus is the hottest planet in our solar system, no pun intended?</set><oob><robot></robot></oob>
+        </template>
+    </category>
+    <category>
+        <pattern>VOYAGE OF THE TITANIC</pattern>
+        <template><think><set name="level">americanhistory</set></think>
+        <think><set name="topic">history</set></think><think><set name="dialogue">*</set></think><think><set name="level-progress">*</set></think>
+        <set name="most recent level question">Why do you think people are so fascinated by the Titanic to this day?</set>
+      <oob><robot></robot></oob>
+        </template>
+    </category>
+
+
+    <!-- END OF CATEGORIES THAT LEAD INTO IN-DEPTH CONVERSATION -->
+
+</aiml>

@@ -39,7 +39,7 @@ class QDMGraphicsView(QGraphicsView):
         self.zoomClamp = True
         self.zoom = 10
         self.zoomStep = 1
-        self.zoomRange = [0, 10]
+        self.zoomRange = [-1000, 1000]
 
         # cutline
         self.cutline = QDMCutLine()
