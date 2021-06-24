@@ -54,28 +54,6 @@ class EditorWidget(QWidget):
             print(ex)
             handleError(ex)
 
-
-    
-    # HACK: The function below was used for testing placement of nodes.
-    #       Not needed for the program, might be helpful for debugging.
-    # def addNodes(self):
-    #     node1 = Node(self.scene, "My Awesome Node 1",
-    #                  inputs=[0, 0, 0], outputs=[1])
-    #     node2 = Node(self.scene, "My Awesome Node 2",
-    #                  inputs=[3, 3, 3], outputs=[1])
-    #     node3 = Node(self.scene, "My Awesome Node 3",
-    #                  inputs=[2, 2, 2], outputs=[1])
-    #     node4 = Node(self.scene, "A Category", inputs=[1, 1], outputs=[2, 2], )
-    #     node1.setPos(-350, -250)
-    #     node2.setPos(-75, 0)
-    #     node3.setPos(200, -150)
-    #     node4.setPos(200, -50)
-
-    #     edge1 = Edge(
-    #         self.scene, node1.outputs[0], node2.inputs[0], edge_type=EDGE_TYPE_BEZIER)
-    #     edge2 = Edge(
-    #         self.scene, node2.outputs[0], node3.inputs[0], edge_type=EDGE_TYPE_BEZIER)
-
     def addNode(self, title, inputs, outputs, posx, posy):
         try:
             print("Adding node")
@@ -102,7 +80,6 @@ class EditorWidget(QWidget):
             print("EXCEPTION CAUGHT! In EditorWidget - updateNode()")
             print(ex)
             handleError(ex)
-
 
     def addDebugContent(self):
         try:
@@ -474,7 +451,7 @@ class EditorWidget(QWidget):
                 if len(node.parents) is 0 and len(node.children) > 0:
                     if DEBUG: print("Node has no parents, only children (Root level node)")
                     if DEBUG: print(f"Placing category:\n{node.category}")
-                    node.setPos(parentXOffset, 0 + (300*(depth*.25)))
+                    node.setPos(parentXOffset, 0 + (300*(depth)))
 
                     if i % 2 == 0: 
                         parentXOffset = parentXOffset * -1
@@ -486,7 +463,7 @@ class EditorWidget(QWidget):
                     for child in node.children:
                         depth = depth + 1
                         y = node.grNode.y()
-                        child.setPos(xOffset, y + (300*(depth*.25)))
+                        child.setPos(xOffset, y + (300*(depth)))
                         
                         if DEBUG: print(f"Placing category:\n{node.category}")
                         self.placeNodes(child.children, depth)
@@ -498,7 +475,7 @@ class EditorWidget(QWidget):
                     
                     # Setting position for first child node
                     y = node.grNode.y()
-                    node.setPos(parentXOffset, y + (100 * (depth+1)))
+                    node.setPos(parentXOffset, y + (100 * ((depth*.02)+1)))
                 
         except Exception as ex:
             print("Exception caught placing nodes!")
