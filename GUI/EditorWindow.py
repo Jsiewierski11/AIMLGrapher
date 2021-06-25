@@ -7,8 +7,6 @@ from Model.Data import *
 import Utils.Storage as Storage
 from GUI.QLabel_Clickable import *
 from GUI.EditorWidget import EditorWidget
-# from GUI.DockerWidget import DockerWidget
-# from GUI.TabController import TabController
 from GUI.Node.QDM.GraphicsScene import *
 from Utils.ErrorMessage import handleError, handleCompileMsg, compileSuccessful, exportSuccessful, importSuccessful
 from GUI.Node.Scene.Scene import Scene
@@ -32,12 +30,7 @@ class EditorWindow(QMainWindow):
         self.editSpace = QWidget() # Used for displaying source code
         self.graphview = None # Used for graphing out categories
         self.aiml = AIML()
-
         self.setCentralWidget(self.editSpace)
-
-        # Creating dockable widget to have as place to write content in categories
-        # self.docker = DockerWidget(self)
-
         self.initUI()
 
 
@@ -53,13 +46,6 @@ class EditorWindow(QMainWindow):
         
         # initialize Menu
         fileMenu = menubar.addMenu('&File')
-        
-        #NOTE: These need to be implemented so we can save position and state of graphview
-        # fileMenu.addAction(self.createAct('&New', 'Ctrl+N', "Create new graph", self.onFileNew))
-        # fileMenu.addSeparator()
-        # fileMenu.addAction(self.createAct('&Open', 'Ctrl+O', "Open file", self.onFileOpen))
-        # fileMenu.addAction(self.createAct('&Save', 'Ctrl+S', "Save file", self.onFileSave))
-        # fileMenu.addAction(self.createAct('Save &As...', 'Ctrl+Shift+S', "Save file as...", self.onFileSaveAs))
         
         fileMenu.addAction(self.createAct('&Export', 'Ctrl+Shift+E', 'Export File', self.onFileExport))
         fileMenu.addAction(self.createAct('&Import', 'Ctrl+Shift+I', 'Import File', self.onFileImport))
@@ -93,6 +79,10 @@ class EditorWindow(QMainWindow):
         self.setWindowTitle("Program-R AIML Editor")
         self.showMaximized()
 
+        # Setting main editing area where Files will be displayed and can be edited
+        # create node editor widget (visualization of categories)
+        self.editSpace.graphview.scene.addHasBeenModifiedListener(self.changeTitle)
+
     # slot function for a category being created and displaying on editSpace
     @pyqtSlot(Tag)
     def categoryCreated(self, cat):
@@ -109,29 +99,16 @@ class EditorWindow(QMainWindow):
 
     def add_graphview(self):
         self.editSpace.layout = QGridLayout(self)
+
         # Setting of backdrop for view categories as nodes.
         self.editSpace.graphview = EditorWidget(self)
-
-        # Building legend and zoom buttons
-        self.add_legend()
 
         # Adding widgets to layout
         self.layout = QGridLayout(self)
         self.editSpace.layout.addWidget(self.graphview, 1, 0, 4, 3)
-        # self.editSpace.layout.addWidget(self.legendLabel, 0, 0)
-        # self.editSpace.layout.addWidget(self.zoom_out, 0, 1)
-        # self.editSpace.layout.addWidget(self.zoom_in, 0, 2)
-
-
-        
-
-        # Making button connections
-        # self.zoom_out.clicked.connect(self.zoom_out_clicked)
-        # self.zoom_in.clicked.connect(self.zoom_in_clicked)
 
         # Setting layout
         self.editSpace.setLayout(self.editSpace.graphview.layout)
-        # self.setLayout(self.layout)
 
     def create_category_graph_view(self, cat):
         try:
@@ -142,9 +119,7 @@ class EditorWindow(QMainWindow):
                     if DEBUG: print("got last sentence of category: {}".format(thatToCheck))
                     title = "Category: " + category.cat_id
                     aNode = Node(self.editSpace.graphview.scene, title, category)
-                    # if DEBUG: print("created node")
                     aNode.content.wdg_label.displayVisuals(category)
-                    # if DEBUG: print("displayed contents on node")
 
                     if thatToCheck is not None:
                         for that in thatToCheck:
@@ -157,6 +132,9 @@ class EditorWindow(QMainWindow):
                     for node in self.editSpace.graphview.scene.nodes:
                         node.updateConnectedEdges()
 
+                    # connecting signals coming from Content Widget
+                    aNode.content.catClicked.connect(self.editSpace.graphview.categoryClicked)
+
             elif cat.type == "comment":
                 print("Comment found, don't display comments on graphview.")
             else:
@@ -164,9 +142,7 @@ class EditorWindow(QMainWindow):
                 if DEBUG: print("got last sentence of category: {}".format(thatToCheck))
                 title = "Category: " + cat.cat_id
                 aNode = Node(self.editSpace.graphview.scene, title, cat)
-                # if DEBUG: print("created node")
                 aNode.content.wdg_label.displayVisuals(cat)
-                # if DEBUG: print("displayed contents on node")
 
                 if thatToCheck is not None:
                     for that in thatToCheck:
@@ -178,41 +154,14 @@ class EditorWindow(QMainWindow):
 
                 for node in self.editSpace.graphview.scene.nodes:
                     node.updateConnectedEdges()
+
+                # connecting signals coming from Content Widget
+                aNode.content.catClicked.connect(self.editSpace.graphview.categoryClicked)
                     
         except Exception as ex:
             print("Exception caught in TabController - create_category_graph_view()")
             print(ex)
             handleError(ex)
-
-    def zoom_in_clicked(self):
-        if DEBUG: print("Zoom In Clicked")
-        zoomFactor = self.editSpace.graphview.view.zoomInFactor
-        zoomFactor += (self.editSpace.graphview.view.zoomStep * 0.25)
-        self.editSpace.graphview.view.scale(zoomFactor, zoomFactor)
-
-
-    def zoom_out_clicked(self):
-        if DEBUG: print("Zoom Out Clicked")
-        zoomFactor = self.editSpace.graphview.view.zoomInFactor
-        zoomFactor -= (self.editSpace.graphview.view.zoomStep * 0.5)
-        self.editSpace.graphview.view.scale(zoomFactor, zoomFactor)
-
-    def add_legend(self):
-        # Creating buttons to zoom in and out of the graph scene
-        self.zoom_out = QPushButton("-")
-        self.zoom_out.resize(50, 50)
-        self.zoom_in = QPushButton("+")
-        self.zoom_in.resize(50, 50)
-
-        # Creating legend to clarify what fields in nodes mean
-        self.legendLabel = QLabel()
-        self.legendLabel.setFont(QFont("Sanserif", 10))
-        self.legendLabel.setText("1st textbox represents the Pattern Tag\n"
-                                 "2nd textbox represents the That Tag\n"
-                                 "3rd textbox represents the Template Tag\n"
-                                 "Yellow node is node currently selected, Red nodes are children, Turquoise nodes are parents.")
-        self.legendLabel.setStyleSheet("QLabel {background-color: black; color: white; border: 1px solid "
-                                       "#01DFD7; border-radius: 5px;}")
 
     def changeTitle(self):
         title = "Node Editor - "

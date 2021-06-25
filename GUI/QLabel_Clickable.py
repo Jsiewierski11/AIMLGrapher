@@ -25,8 +25,9 @@ class QLabelClickable(QLabel):
         if self.last == "Click":
             QTimer.singleShot(QApplication.instance().doubleClickInterval(), self.performSingleClickAction)
         else:
-            # emmit to Editor Widget, Editor Widget sends cat to Window then to Docker
-            print("label clicked")
+            # FIXME: Currently: emmits to Editor Widget, Editor Widget sends cat to Window then to Docker (docker widget doesn't exist in this setup)
+            #        Change to: so it emits to Editor Window, that needs to handle the logic that docker used to.
+            print("mouseReleaseEvent() - label clicked")
             self.catClicked.emit()
 
     def mouseDoubleClickEvent(self, event):
@@ -34,8 +35,8 @@ class QLabelClickable(QLabel):
 
     def performSingleClickAction(self):
         if self.last == "Click":
-            # emmit to Editor Widget, Editor Widget sends cat to Window then to Docker
-            print("label clicked")
+            # emmit to Editor Widget, Editor Widget sends cat to Window
+            print("performSingleClickAction() - label clicked")
             self.catClicked.emit()
 
 
@@ -78,25 +79,15 @@ class LabelClickable(QWidget):
 
         # Making labels scrollable
         layout = QVBoxLayout()
-        # patternArea = QScrollArea()
-        # patternArea.setWidget(self.patternLabel)
-        # thatArea = QScrollArea()
-        # thatArea.setWidget(self.thatLabel)
         templateArea = QScrollArea()
-        # templateArea.setMinimumSize(350, 270)
         templateArea.setMaximumSize(350, 270)
         templateArea.setWidget(self.templateLabel)
 
-        # layout.addWidget(patternArea)
-        # layout.addWidget(thatArea)
         layout.addWidget(self.patternLabel)
         layout.addWidget(self.thatLabel)
         layout.addWidget(templateArea)
 
         self.setLayout(layout)
-
-        # templateFont = QFont("Sans", 9)
-        # self.templateLabel.setFont(templateFont)
 
     def displayVisuals(self, category):
         try:

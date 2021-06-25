@@ -25,11 +25,9 @@ class EditorWidget(QWidget):
     def __init__(self, window, parent=None):
         try:
             super().__init__(parent)
-
             self.stylesheet_filename = 'GUI/style/nodestyle.qss'
             self.loadStylesheet(self.stylesheet_filename)
             self.responseTable = None
-
             self.initUI(window)
         except Exception as ex:
             print("Exception caught in EditorWidget - __init__()")

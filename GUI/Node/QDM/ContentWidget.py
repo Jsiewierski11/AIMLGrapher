@@ -29,29 +29,16 @@ class QDMNodeContentWidget(QWidget, Serializable):
             self.layout.setContentsMargins(0, 0, 0, 0)
             self.setLayout(self.layout)
 
-            # self.wdg_label = QLabel("Category")
             self.layout.addWidget(self.wdg_label)
-
-            # add child button
-            # self.addChild = QPushButton("Add child")
-            # self.layout.addWidget(self.addChild)
-
-            # Display content on node
-            # self.wdg_label.displayVisuals(self.node.category)
             
-            # self.wdg_label.templateLabel.setText(self.node.category)
-            # self.wdg_label.patternLabel.catClicked.connect(self.categoryClicked)
-            # self.wdg_label.thatLabel.catClicked.connect(self.categoryClicked)
-            # self.addChild.clicked.connect(self.addChildClicked)
-
+            # Setting connections for when a node is clicked
+            self.wdg_label.templateLabel.catClicked.connect(self.categoryClicked)
+            self.wdg_label.patternLabel.catClicked.connect(self.categoryClicked)
+            self.wdg_label.thatLabel.catClicked.connect(self.categoryClicked)
         except Exception as ex:
             print("Exception caught in ContentWidget - initUI()")
             print(ex)
             handleError(ex)
-
-    # def addChildClicked(self):
-    #     print("add child clicked")
-    #     self.childClicked.emit(self.node.category) #emitting signal to editor widget
 
     def setEditingFlag(self, value):
         try:
