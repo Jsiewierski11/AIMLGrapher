@@ -91,12 +91,6 @@ class EditorWindow(QMainWindow):
         # emitting signal to send category received from docker to EditorWidget slot
         self.catCreated.emit(cat) 
 
-
-    @pyqtSlot(Tag)
-    def categoryClicked(self, cat):
-        if DEBUG: print("slot in EditorWindow - categoryClicked()")
-        self.catClicked.emit(cat) # emitting signal to send category to docker to repopulate fields
-
     def add_graphview(self):
         self.editSpace.layout = QGridLayout(self)
 

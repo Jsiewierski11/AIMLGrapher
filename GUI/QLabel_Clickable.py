@@ -70,7 +70,7 @@ class LabelClickable(QWidget):
 
         self.templateLabel = QLabelClickable(self)
         self.templateLabel.setWordWrap(True)
-        self.templateLabel.setGeometry(0, 120, 350, 270)
+        self.templateLabel.setGeometry(0, 120, 350, 700)
         self.templateLabel.setToolTip("Edit category")
         self.templateLabel.setCursor(Qt.PointingHandCursor)
         self.templateLabel.setStyleSheet("QLabel {background-color: black; color: white; border: 1px solid "

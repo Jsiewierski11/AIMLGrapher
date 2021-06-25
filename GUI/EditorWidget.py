@@ -492,7 +492,7 @@ class EditorWidget(QWidget):
         self.scene.nodes = list(map(self.setNodeStyleSheet, self.scene.nodes))
         
         try:
-            # FIXME: Optimize by maybe place parent and children nodes in something other than lists, maybe an unordered set?
+            # FIXME: Optimize by maybe storing parent and children nodes in something other than lists, maybe an unordered set?
             for node in self.scene.nodes:
                 if DEBUG: print("Searching for correct node")
                 if node.category.cat_id == cat.cat_id:
@@ -504,8 +504,6 @@ class EditorWidget(QWidget):
                     for parent in node.parents:
                         if DEBUG: print("Changing background of parent")
                         parent.content.setStyleSheet("QDMNodeContentWidget { background: #0cfdd8; }")
-            
-            self.catClicked.emit(cat) # emitting signal to be sent to EditorWindow
         except Exception as ex:
             print("Exception caught when category is clicked.")
             print(ex)
