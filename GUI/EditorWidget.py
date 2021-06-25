@@ -492,7 +492,7 @@ class EditorWidget(QWidget):
         self.scene.nodes = list(map(self.setNodeStyleSheet, self.scene.nodes))
         
         try:
-            # FIXME: Optimize by maybe place parent and children nodes in something other than lists.
+            # FIXME: Optimize by maybe place parent and children nodes in something other than lists, maybe an unordered set?
             for node in self.scene.nodes:
                 if DEBUG: print("Searching for correct node")
                 if node.category.cat_id == cat.cat_id:

@@ -25,8 +25,7 @@ class QLabelClickable(QLabel):
         if self.last == "Click":
             QTimer.singleShot(QApplication.instance().doubleClickInterval(), self.performSingleClickAction)
         else:
-            # FIXME: Currently: emmits to Editor Widget, Editor Widget sends cat to Window then to Docker (docker widget doesn't exist in this setup)
-            #        Change to: so it emits to Editor Window, that needs to handle the logic that docker used to.
+            # emmits to Editor Widget categoryClicked()
             print("mouseReleaseEvent() - label clicked")
             self.catClicked.emit()
 
@@ -35,7 +34,7 @@ class QLabelClickable(QLabel):
 
     def performSingleClickAction(self):
         if self.last == "Click":
-            # emmit to Editor Widget, Editor Widget sends cat to Window
+            # emmits to Editor Widget categoryClicked()
             print("performSingleClickAction() - label clicked")
             self.catClicked.emit()
 
