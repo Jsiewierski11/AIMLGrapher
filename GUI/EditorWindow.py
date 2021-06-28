@@ -1,6 +1,6 @@
 import os
 import json
-from PyQt5.QtWidgets import QMainWindow, QLabel, QAction, QMessageBox, QApplication, QFileDialog, QTextEdit, QVBoxLayout, QMessageBox
+from PyQt5.QtWidgets import QMainWindow, QLabel, QAction, QMessageBox, QApplication, QFileDialog, QTextEdit, QVBoxLayout, QMessageBox, QPushButton
 from PyQt5.QtGui import QColor
 from PyQt5.QtCore import Qt, pyqtSlot, QFileInfo
 from Model.Data import *
@@ -11,6 +11,7 @@ from GUI.Node.QDM.GraphicsScene import *
 from Utils.ErrorMessage import handleError, handleCompileMsg, compileSuccessful, exportSuccessful, importSuccessful
 from GUI.Node.Scene.Scene import Scene
 from GUI.Node.Node import Node
+from GUI.ToolbarWidget import Toolbar
 
 
 DEBUG = True
@@ -68,7 +69,11 @@ class EditorWindow(QMainWindow):
         # themeMenu.addAction(self.createAct('Dark Theme', 'Ctrl+Shift+D', 'Switch Text Editor to Dark Theme', self.switchToDark))
         # themeMenu.addAction(self.createAct('Light Theme', 'Ctrl+Shift+L', 'Switch Text Editor to Light Theme', self.switchToLight))
 
+        
+        self.editSpace.layout = QGridLayout(self)
+
         self.add_graphview()
+        self.add_toolbar()
 
         # status bar
         self.statusBar().showMessage("")
@@ -91,9 +96,12 @@ class EditorWindow(QMainWindow):
         # emitting signal to send category received from docker to EditorWidget slot
         self.catCreated.emit(cat) 
 
-    def add_graphview(self):
-        self.editSpace.layout = QGridLayout(self)
+    def add_toolbar(self):
+        self.toolbar = Toolbar(scene=self.editSpace.graphview.scene)
+        self.addDockWidget(Qt.LeftDockWidgetArea, self.toolbar)
+        
 
+    def add_graphview(self):
         # Setting of backdrop for view categories as nodes.
         self.editSpace.graphview = EditorWidget(self)
 
