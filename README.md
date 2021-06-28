@@ -25,5 +25,3 @@ AIML is a markup language used to create chatbots created by [Richard Wallace](h
 
 # TODOs:
 - Have edges change colors when a node is clicked on.
-- Have an unhighlight button to turn off node highlighting.
-- Make text display fit all contents of the category (this is especially needed for the template area).
