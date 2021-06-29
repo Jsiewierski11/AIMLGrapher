@@ -12,6 +12,26 @@ AIML is a markup language used to create chatbots created by [Richard Wallace](h
 
 # Notes about the Project
 
+## Set up the enviornment
+1- Install virtualenv for linux:
+```
+sudo apt-get install python3-pip
+pip3 install virtualenv
+```
+2- Create virtualenv named "env"(in the same directory as you cloned):
+```
+virtualenv -p python3 env
+```
+
+3- Activate virtualenv
+```
+source env/bin/activate
+```
+4- Install dependencies
+```
+pip install -r requirements
+```
+
 ## To Run the Project
 - Simply run the following command in the root directory: 
     ```
