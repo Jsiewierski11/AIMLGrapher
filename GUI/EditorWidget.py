@@ -439,11 +439,9 @@ class EditorWidget(QWidget):
                     if DEBUG: print("Node has no parents or children (Root level node)")
                     if DEBUG: print(f"Placing category:\n{node.category}")
                     node.setPos(parentXOffset, 0)
-                    # parentXOffset = (abs(parentXOffset) + 425)
                     if i % 2 == 0: 
-                        parentXOffset = parentXOffset * -1
+                        parentXOffset = node.grNode.x() - 425
                     else:
-                        # parentXOffset = (abs(parentXOffset) + 425)
                         parentXOffset = node.grNode.x() + 425
 
                 if len(node.parents) is 0 and len(node.children) > 0:
@@ -452,7 +450,7 @@ class EditorWidget(QWidget):
                     node.setPos(parentXOffset, 0 + (300*(depth)))
 
                     if i % 2 == 0: 
-                        parentXOffset = parentXOffset * -1
+                        parentXOffset = node.grNode.x() - 425
                     else:
                         parentXOffset = node.grNode.x() + 425
                 else:
@@ -467,7 +465,7 @@ class EditorWidget(QWidget):
                         self.placeNodes(child.children, depth)
                     
                     if i % 2 == 0: 
-                        parentXOffset = parentXOffset * -1
+                        parentXOffset = node.grNode.x() - 425
                     else:
                         parentXOffset = node.grNode.x() + 425
                     
